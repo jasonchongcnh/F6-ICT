@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.venv/
 .coverage
 savegame.json
 evidence/screenshots/*.png

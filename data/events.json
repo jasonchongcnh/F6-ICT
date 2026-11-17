@@ -1,0 +1,196 @@
+[
+  {
+    "id": "drought",
+    "title": "A Season Without Rain",
+    "text": "The reservoir is shrinking. Farmers ask for water, while the wetland also needs protection.",
+    "choices": [
+      {
+        "label": "Share water fairly",
+        "description": "Everyone accepts a smaller ration.",
+        "effects": {"water": -10, "community": 7, "trust": 6, "hope": 3}
+      },
+      {
+        "label": "Protect the wetland",
+        "description": "Endure scarcity now so the water cycle can recover.",
+        "effects": {"water": -13, "ecology": 9, "hope": 4},
+        "delayed": {"rounds": 2, "message": "The protected wetland holds new rainfall", "effects": {"water": 14, "ecology": 3}}
+      },
+      {
+        "label": "Sell private access",
+        "description": "Gain supplies, but exclude neighbours.",
+        "effects": {"food": 10, "water": -5, "community": -11, "trust": -10}
+      }
+    ]
+  },
+  {
+    "id": "factory_offer",
+    "title": "The Factory Offer",
+    "text": "A company offers quick supplies if it may release waste near the river.",
+    "choices": [
+      {
+        "label": "Accept without limits",
+        "description": "Receive plenty today and leave pollution for tomorrow.",
+        "effects": {"food": 16, "wood": 10, "ecology": -16, "trust": -5},
+        "delayed": {"rounds": 2, "message": "Pollution spreads downstream", "effects": {"water": -14, "community": -7, "hope": -6}}
+      },
+      {
+        "label": "Require clean methods",
+        "description": "A smaller agreement protects the common good.",
+        "effects": {"food": 7, "wood": 4, "ecology": -2, "trust": 7}
+      },
+      {
+        "label": "Build a local cooperative",
+        "description": "Sacrifice materials to create shared work.",
+        "effects": {"wood": -8, "community": 9, "hope": 8, "trust": 6},
+        "delayed": {"rounds": 3, "message": "The cooperative shares its first harvest", "effects": {"food": 12, "community": 3}}
+      }
+    ]
+  },
+  {
+    "id": "neighbour_fire",
+    "title": "A Neighbour's House Fire",
+    "text": "A family has lost its home. Rebuilding will consume supplies saved for the island.",
+    "choices": [
+      {
+        "label": "Rebuild together",
+        "description": "Give wood and food; no neighbour stands alone.",
+        "effects": {"wood": -12, "food": -6, "community": 13, "hope": 10, "trust": 8}
+      },
+      {
+        "label": "Offer temporary shelter",
+        "description": "Provide enough help without exhausting reserves.",
+        "effects": {"food": -4, "community": 7, "hope": 5, "trust": 4}
+      },
+      {
+        "label": "Protect our own stores",
+        "description": "Keep every resource, but abandon solidarity.",
+        "effects": {"community": -12, "hope": -9, "trust": -10}
+      }
+    ]
+  },
+  {
+    "id": "forest_pests",
+    "title": "Pests in the Forest",
+    "text": "Insects threaten young trees. A strong chemical is fast; patient restoration is safer.",
+    "choices": [
+      {
+        "label": "Use strong chemicals",
+        "description": "Save timber now but harm other species.",
+        "effects": {"wood": 12, "ecology": -13, "water": -5}
+      },
+      {
+        "label": "Restore biodiversity",
+        "description": "Use timber to create habitats for natural predators.",
+        "effects": {"wood": -7, "ecology": 12, "hope": 4},
+        "delayed": {"rounds": 2, "message": "Birds return and control the pests", "effects": {"wood": 9, "ecology": 4}}
+      }
+    ]
+  },
+  {
+    "id": "harvest_surplus",
+    "title": "A Surplus Harvest",
+    "text": "The farm has more food than expected. The island must decide who benefits.",
+    "choices": [
+      {
+        "label": "Share with families",
+        "description": "Distribute the surplus according to need.",
+        "effects": {"food": 5, "community": 10, "trust": 7, "hope": 5}
+      },
+      {
+        "label": "Save seed and soil",
+        "description": "Prepare for future seasons.",
+        "effects": {"food": 7, "ecology": 7, "hope": 3},
+        "delayed": {"rounds": 3, "message": "Saved seed strengthens the next harvest", "effects": {"food": 12}}
+      },
+      {
+        "label": "Sell at the highest price",
+        "description": "Build reserves while poorer families struggle.",
+        "effects": {"food": 15, "wood": 6, "community": -8, "trust": -8}
+      }
+    ]
+  },
+  {
+    "id": "storm",
+    "title": "Storm Over Haven Island",
+    "text": "Heavy winds approach. There is not enough time to protect every place equally.",
+    "choices": [
+      {
+        "label": "Protect vulnerable homes",
+        "description": "Use timber where people face the greatest danger.",
+        "effects": {"wood": -10, "community": 10, "trust": 9, "hope": 5}
+      },
+      {
+        "label": "Strengthen the riverbank",
+        "description": "Protect homes and habitats through natural barriers.",
+        "effects": {"wood": -7, "ecology": 8, "water": 6, "community": 4}
+      },
+      {
+        "label": "Protect the storehouse",
+        "description": "Preserve supplies but leave outer homes exposed.",
+        "effects": {"food": 6, "wood": 5, "community": -8, "hope": -7}
+      }
+    ]
+  },
+  {
+    "id": "new_families",
+    "title": "New Families Arrive",
+    "text": "Families displaced by flooding ask to join the community.",
+    "choices": [
+      {
+        "label": "Welcome and share",
+        "description": "Use supplies and invite everyone to contribute.",
+        "effects": {"food": -9, "water": -7, "community": 11, "hope": 10, "trust": 7},
+        "delayed": {"rounds": 2, "message": "New neighbours contribute skills", "effects": {"food": 7, "wood": 7, "community": 3}}
+      },
+      {
+        "label": "Welcome a smaller group",
+        "description": "Balance hospitality with current capacity.",
+        "effects": {"food": -5, "water": -4, "community": 6, "hope": 5}
+      },
+      {
+        "label": "Close the shore",
+        "description": "Keep supplies but turn neighbours away.",
+        "effects": {"community": -9, "hope": -11, "trust": -7}
+      }
+    ]
+  },
+  {
+    "id": "quiet_spring",
+    "title": "The Quiet Spring",
+    "text": "A clear spring is discovered in the forest. It can be protected or exploited.",
+    "choices": [
+      {
+        "label": "Create a shared reserve",
+        "description": "Protect the source and guarantee fair access.",
+        "effects": {"water": 8, "ecology": 8, "community": 6, "trust": 6}
+      },
+      {
+        "label": "Bottle and sell it",
+        "description": "Gain resources quickly from a common gift.",
+        "effects": {"water": 15, "wood": 8, "ecology": -10, "community": -6}
+      }
+    ]
+  },
+  {
+    "id": "council_dispute",
+    "title": "A Divided Council",
+    "text": "The council argues over whether farms or habitats should receive the next water release.",
+    "choices": [
+      {
+        "label": "Hold a listening circle",
+        "description": "Spend time seeking a fair compromise.",
+        "effects": {"water": -4, "community": 9, "trust": 10, "hope": 5}
+      },
+      {
+        "label": "Prioritise farms",
+        "description": "Secure food now while habitats dry.",
+        "effects": {"food": 11, "water": -5, "ecology": -8, "trust": -3}
+      },
+      {
+        "label": "Prioritise habitats",
+        "description": "Restore nature while accepting a smaller harvest.",
+        "effects": {"food": -7, "ecology": 11, "hope": 4}
+      }
+    ]
+  }
+]
