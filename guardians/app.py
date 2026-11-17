@@ -461,7 +461,7 @@ class GameApp:
             button = Button(pygame.Rect(120, y, 560, 58), label, f"choice-{index}")
             button.draw(self.screen, self.font_small, p, focused=index == self.focus_index)
             self.action_buttons.append(button)
-            draw_text(self.screen, choice.description[:85], self.font_small, p["muted"], (132, y + 37))
+            draw_text(self.screen, choice.description[:85], self.font_small, p["cream"], (132, y + 37))
             y += 75
 
     def _draw_pause(self) -> None:
