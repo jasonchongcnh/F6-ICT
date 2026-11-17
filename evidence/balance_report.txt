@@ -1,0 +1,28 @@
+Guardians of Creation balance analysis
+Date: 17 November 2026
+Command: .venv/bin/python -m tools.balance_simulation --runs 1000 --csv evidence/balance_results.csv
+
+Balance simulations: 1000
+extractive : neglect=200
+restorative: faithful=11, restoration=189
+community  : neglect=10, restoration=190
+balanced   : faithful=7, restoration=193
+random     : faithful=115, neglect=16, profit=3, restoration=49, solidarity=17
+
+Interpretation
+--------------
+Each named strategy was tested on 200 deterministic seeds. Pure extraction always
+failed through neglect. Specialised restorative, community-focused, and fixed
+balanced policies most often produced a restoration ending, but none guaranteed
+the highest "faithful" ending. The varied random policy reached all five endings,
+showing that seeds and individual event/action combinations materially affect the
+result. A single repeated extractive action is not a winning strategy, and the
+faithful ending depends on maintaining all three values plus food and water.
+
+Limitations
+-----------
+These are scripted policies, not real players. Classroom testing is still needed
+to measure choice clarity, perceived difficulty, enjoyment, and whether students
+discover an unintended dominant sequence. Raw per-run results are retained in
+balance_results.csv for independent checking.
+

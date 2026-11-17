@@ -28,7 +28,7 @@ The main menu includes instructions, new game, load, accessibility, and exit. Du
 
 ```bash
 pytest -q
-python tools/balance_simulation.py --runs 500
+python -m tools.balance_simulation --runs 500
 ```
 
 See `docs/` and `evidence/` for architecture, process records, tests, and submission guidance.

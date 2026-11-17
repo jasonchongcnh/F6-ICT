@@ -172,7 +172,13 @@ class GameModel:
         values = (s.ecology, s.community, s.hope)
         if min(values) >= 58 and balance <= 25 and min(s.food, s.water) >= 15:
             ending = "faithful"
-        elif s.trust >= 75 and s.community >= 65 and s.hope >= 60:
+        elif (
+            s.trust >= 75
+            and s.community >= 65
+            and s.hope >= 60
+            and s.ecology >= 45
+            and min(s.food, s.water) >= 15
+        ):
             ending = "solidarity"
         elif s.ecology >= 75 and s.community >= 45:
             ending = "restoration"
