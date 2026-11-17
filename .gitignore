@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+savegame.json
+evidence/screenshots/*.png
+evidence/videos/*.mp4
+dist/
+build/
+
