@@ -1,4 +1,4 @@
-"""Shared configuration constants."""
+"""共用設定常數。"""
 
 from pathlib import Path
 

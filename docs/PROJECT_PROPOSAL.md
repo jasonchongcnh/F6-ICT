@@ -1,34 +1,30 @@
-# Project Proposal — Guardians of Creation
+# 專題計劃書——受造界守護者
 
-Date created: 17 November 2026
+建立日期：2026 年 11 月 17 日
 
-## Design intent
+## 設計初衷
 
-The player is a newly appointed steward of Haven Island. In each of 12 rounds they receive two actions and choose where to serve: forest, river, farm, or village. Actions supply immediate needs but alter connected systems. Random dilemmas add sacrifice, justice, solidarity, and delayed consequences. A faithful ending requires balance rather than maximising one score.
+玩家是希望島的新任管家。每個回合有兩次行動，可照顧森林、河流、農田或村莊。每項行動都會改變即時資源及生態、社區、希望三項長期數值；事件抉擇則加入犧牲、公義、團結與延後後果。忠信結局要求各系統保持平衡，而非只追求單一最高數值。
 
-Target audience: students aged 15–18 who can read short English instructions and use a keyboard or mouse.
+目標玩家為 15–18 歲學生。遊戲以 800×600 解像度、60 FPS 為目標，並可在學校電腦離線運行。
 
-## Quantifiable goals
+## 可量度目標
 
-- 800×600 display at a stable target of 60 FPS.
-- Four interactive map zones and visible player movement.
-- Three interacting layers: resources, values, and event consequences.
-- At least eight events, each with two or three meaningful choices.
-- Twelve rounds, two actions per round, delayed effects, deterministic seeded replay.
-- At least three endings; the final build contains five.
-- Save/load with validation and graceful error handling.
-- Keyboard and mouse operation plus high contrast and sound toggles.
-- Automated unit tests and at least 500 simulated balance runs.
+- 四個可互動區域及可見的玩家移動。
+- 十二個回合，每回合兩次行動。
+- 資源、事件和價值三個互相影響的系統。
+- 至少八個事件，每個有兩個或以上有意義選項；成品包含九個。
+- 延後效果、固定隨機種子及可重現流程。
+- 至少三個結局；成品包含五個。
+- 經驗證的 JSON 存檔／讀檔和清晰錯誤處理。
+- 鍵盤、滑鼠、高對比模式和聲音開關。
+- 自動化測試及至少 500 次平衡模擬。
 
-## Core loop
+## 核心循環
 
-Review dashboard → move to a zone → choose an action → observe resource/value feedback → resolve an event → apply delayed consequences → continue to the next round → receive a balanced ending.
+查看儀表板 → 移動至區域 → 執行行動 → 觀察資源／價值變化 → 處理事件 → 套用延後後果 → 進入下一回合 → 取得結局。
 
-## Theme interpretation
+## 主題融入
 
-Stewardship is the actual optimisation problem. Harvesting and profit can meet urgent needs, but excessive extraction damages ecology and future productivity. Sharing costs food or wood but strengthens community and hope. Restoration consumes scarce actions now and creates delayed benefits. The good ending therefore rewards prudence, solidarity, justice, and care for creation.
-
-## Scope and feasibility
-
-The game uses only Python, Pygame CE, JSON, and Python’s standard library. Art and sound are generated in code, avoiding licensing and offline-runtime risks. Data-driven events and a separated simulation model allow systematic testing without opening a window.
+管家職分就是遊戲的核心問題。採集和盈利可以解決眼前需要，過度索取卻會破壞生態及未來產量；分享會消耗物資，卻能建立社區與希望；修復環境要付出今天的行動，回報則在日後出現。因此遊戲實際獎勵明智、團結、公義及關愛受造界。
 

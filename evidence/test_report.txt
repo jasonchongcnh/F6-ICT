@@ -1,11 +1,11 @@
-Guardians of Creation automated regression report
-Date: 17 November 2026
-Command: .venv/bin/python -m pytest -q
+《受造界守護者》自動回歸測試報告
+更新日期：2026 年 11 月 21 日
+命令：.venv/bin/python -m pytest -q
+
+測試範圍：事件資料驗證、固定種子重玩、行動／事件狀態轉換、數值限制、結局、存讀檔錯誤、Pygame 畫面流程、無障礙快捷鍵及繁體中文渲染。
 
 ................                                                         [100%]
-16 passed in 0.14s
+16 項測試通過（0.19 秒）
 
-Coverage areas: validated event data, deterministic replay, action/event state
-transitions, stat clamping, endings, save/load error handling, Pygame scene
-rendering, and accessibility shortcuts.
+繁體中文主選單、地圖、事件卡及結局畫面已重新渲染並作視覺檢查。
 

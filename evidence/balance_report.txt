@@ -1,28 +1,19 @@
-Guardians of Creation balance analysis
-Date: 17 November 2026
-Command: .venv/bin/python -m tools.balance_simulation --runs 1000 --csv evidence/balance_results.csv
+《受造界守護者》平衡分析
+日期：2026 年 11 月 17 日
+命令：.venv/bin/python -m tools.balance_simulation --runs 1000 --csv evidence/balance_results.csv
 
-Balance simulations: 1000
-extractive : neglect=200
-restorative: faithful=11, restoration=189
-community  : neglect=10, restoration=190
-balanced   : faithful=7, restoration=193
-random     : faithful=115, neglect=16, profit=3, restoration=49, solidarity=17
+模擬總數：1000
+純索取策略：疏忽=200
+環境修復策略：忠信=11，復育=189
+社區優先策略：疏忽=10，復育=190
+固定平衡策略：忠信=7，復育=193
+隨機多變策略：忠信=115，疏忽=16，短期利益=3，復育=49，團結=17
 
-Interpretation
---------------
-Each named strategy was tested on 200 deterministic seeds. Pure extraction always
-failed through neglect. Specialised restorative, community-focused, and fixed
-balanced policies most often produced a restoration ending, but none guaranteed
-the highest "faithful" ending. The varied random policy reached all five endings,
-showing that seeds and individual event/action combinations materially affect the
-result. A single repeated extractive action is not a winning strategy, and the
-faithful ending depends on maintaining all three values plus food and water.
+解讀
+----
+每種策略以 200 個固定種子測試。純索取策略全部失敗；修復、社區及固定平衡策略大多得到復育結局，但沒有策略保證最高「忠信管家」結局。多變策略能到達全部五個結局，證明種子及個別選擇組合會實質影響結果。忠信結局要求同時維持三項價值、食物和食水。
 
-Limitations
------------
-These are scripted policies, not real players. Classroom testing is still needed
-to measure choice clarity, perceived difficulty, enjoyment, and whether students
-discover an unintended dominant sequence. Raw per-run results are retained in
-balance_results.csv for independent checking.
+限制
+----
+這些是程式策略，不是真人玩家，不能衡量選擇是否清楚、難度感、樂趣或意外必勝路線。仍須進行課堂試玩。每次模擬原始結果保留於 balance_results.csv。
 

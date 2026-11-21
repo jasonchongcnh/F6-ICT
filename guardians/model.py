@@ -1,4 +1,4 @@
-"""Deterministic game simulation, independent of Pygame rendering."""
+"""獨立於 Pygame 渲染的固定種子遊戲模型。"""
 
 from __future__ import annotations
 
@@ -43,26 +43,26 @@ class GameState:
 
 ZONE_ACTIONS: dict[str, tuple[dict[str, Any], ...]] = {
     "forest": (
-        {"name": "Careful harvest", "effects": {"wood": 12, "ecology": -4, "community": 2}},
-        {"name": "Plant native trees", "effects": {"wood": -5, "ecology": 10, "hope": 3}},
+        {"name": "適量伐木", "effects": {"wood": 12, "ecology": -4, "community": 2}},
+        {"name": "種植原生樹木", "effects": {"wood": -5, "ecology": 10, "hope": 3}},
     ),
     "river": (
-        {"name": "Collect water", "effects": {"water": 13, "ecology": -3}},
-        {"name": "Clean the river", "effects": {"water": -4, "ecology": 9, "community": 4}},
+        {"name": "收集食水", "effects": {"water": 13, "ecology": -3}},
+        {"name": "清理河流", "effects": {"water": -4, "ecology": 9, "community": 4}},
     ),
     "farm": (
-        {"name": "Gather harvest", "effects": {"food": 13, "ecology": -3}},
-        {"name": "Regenerative farming", "effects": {"food": 5, "ecology": 6, "hope": 3}},
+        {"name": "收割農作物", "effects": {"food": 13, "ecology": -3}},
+        {"name": "再生農耕", "effects": {"food": 5, "ecology": 6, "hope": 3}},
     ),
     "village": (
-        {"name": "Share supplies", "effects": {"food": -7, "wood": -3, "community": 9, "trust": 7, "hope": 5}},
-        {"name": "Community workshop", "effects": {"wood": -4, "community": 6, "trust": 4, "hope": 4}},
+        {"name": "分享物資", "effects": {"food": -7, "wood": -3, "community": 9, "trust": 7, "hope": 5}},
+        {"name": "社區工作坊", "effects": {"wood": -4, "community": 6, "trust": 4, "hope": 4}},
     ),
 }
 
 
 class GameModel:
-    """Owns game rules, state transitions, random order, and endings."""
+    """管理遊戲規則、狀態轉換、隨機次序及結局。"""
 
     def __init__(self, seed: int | None = None, events: list[Event] | None = None) -> None:
         actual_seed = seed if seed is not None else random.SystemRandom().randrange(1, 1_000_000)
@@ -70,7 +70,7 @@ class GameModel:
         self._by_id = {event.event_id: event for event in self.events}
         self.state = GameState(seed=actual_seed)
         self._prepare_deck()
-        self._log(f"Stewardship begins. Replay seed: {actual_seed}.")
+        self._log(f"管家之旅開始。重玩種子：{actual_seed}。")
 
     def _prepare_deck(self) -> None:
         rng = random.Random(self.state.seed)
@@ -92,17 +92,17 @@ class GameModel:
     def apply_effects(self, effects: dict[str, int]) -> None:
         for stat, change in effects.items():
             if stat not in STAT_NAMES:
-                raise ValueError(f"Unknown stat: {stat}")
+                raise ValueError(f"未知數值：{stat}")
             value = getattr(self.state, stat) + change
             setattr(self.state, stat, max(MIN_VALUE, min(MAX_VALUE, value)))
 
     def perform_zone_action(self, zone: str, action_index: int) -> str:
         if self.state.finished or self.current_event:
-            raise ValueError("An action cannot be taken now")
+            raise ValueError("現在不能執行行動")
         if self.state.actions_left <= 0:
-            raise ValueError("No actions remain this round")
+            raise ValueError("本回合已沒有剩餘行動")
         if zone not in ZONE_ACTIONS or action_index not in range(len(ZONE_ACTIONS[zone])):
-            raise ValueError("Unknown zone action")
+            raise ValueError("未知的區域行動")
         action = ZONE_ACTIONS[zone][action_index]
         self.apply_effects(action["effects"])
         self.state.actions_left -= 1
@@ -119,12 +119,12 @@ class GameModel:
         event_id = self.state.event_deck[self.state.event_index]
         self.state.event_index += 1
         self.state.current_event_id = event_id
-        self._log(f"Event: {self._by_id[event_id].title}")
+        self._log(f"事件：{self._by_id[event_id].title}")
 
     def choose_event(self, choice_index: int) -> str:
         event = self.current_event
         if event is None or choice_index not in range(len(event.choices)):
-            raise ValueError("Unknown event choice")
+            raise ValueError("未知的事件選項")
         choice = event.choices[choice_index]
         self.apply_effects(choice.effects)
         if choice.delayed:
@@ -153,18 +153,18 @@ class GameModel:
         self.state.pending = [item for item in self.state.pending if item not in due]
         for item in due:
             self.apply_effects(item.effects)
-            self._log(f"Delayed effect — {item.message}: {self.describe_effects(item.effects)}")
+            self._log(f"延後效果——{item.message}：{self.describe_effects(item.effects)}")
         # Every household consumes essentials; healthier ecology cushions water loss.
         upkeep = {"food": -4, "water": -4 if self.state.ecology >= 35 else -7}
         self.apply_effects(upkeep)
-        self._log(f"Round {self.state.round_number}: community needs {self.describe_effects(upkeep)}")
+        self._log(f"第 {self.state.round_number} 回合：社區日常消耗 {self.describe_effects(upkeep)}")
         self._check_collapse()
 
     def _check_collapse(self) -> None:
         if min(self.state.ecology, self.state.community, self.state.hope) <= 0:
             self.state.finished = True
             self.state.ending = "neglect"
-            self._log("The island's shared life has collapsed through neglect.")
+            self._log("由於疏忽，島上的共同生活已經崩潰。")
 
     def finish_game(self) -> str:
         s = self.state
@@ -188,14 +188,18 @@ class GameModel:
             ending = "neglect"
         s.finished = True
         s.ending = ending
-        self._log(f"Final ending: {ending}.")
+        self._log(f"最終結局：{ending}。")
         return ending
 
     @staticmethod
     def describe_effects(effects: dict[str, int]) -> str:
         if not effects:
-            return "no immediate change"
-        return ", ".join(f"{key.title()} {value:+d}" for key, value in effects.items())
+            return "沒有即時變化"
+        labels = {
+            "water": "食水", "food": "食物", "wood": "木材", "trust": "信任",
+            "ecology": "生態", "community": "社區", "hope": "希望",
+        }
+        return "、".join(f"{labels[key]} {value:+d}" for key, value in effects.items())
 
     def to_dict(self) -> dict[str, Any]:
         return {"version": 1, "state": asdict(self.state)}
@@ -203,20 +207,20 @@ class GameModel:
     @classmethod
     def from_dict(cls, data: dict[str, Any], events: list[Event] | None = None) -> "GameModel":
         if not isinstance(data, dict) or data.get("version") != 1 or not isinstance(data.get("state"), dict):
-            raise ValueError("Unsupported or damaged save file")
+            raise ValueError("不支援或已損壞的存檔")
         raw = dict(data["state"])
         missing = {field.name for field in GameState.__dataclass_fields__.values()} - raw.keys()
         if missing:
-            raise ValueError(f"Save file is missing: {', '.join(sorted(missing))}")
+            raise ValueError(f"存檔缺少欄位：{', '.join(sorted(missing))}")
         raw["pending"] = [PendingEffect(**item) for item in raw["pending"]]
         model = cls(seed=int(raw["seed"]), events=events)
         model.state = GameState(**raw)
         unknown_events = set(model.state.event_deck) - model._by_id.keys()
         if unknown_events:
-            raise ValueError("Save file refers to unavailable events")
+            raise ValueError("存檔引用了不存在的事件")
         for stat in STAT_NAMES:
             value = getattr(model.state, stat)
             if not isinstance(value, int) or not MIN_VALUE <= value <= MAX_VALUE:
-                raise ValueError(f"Save file has invalid {stat}")
+                raise ValueError(f"存檔中的 {stat} 數值無效")
         return model
 

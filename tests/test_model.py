@@ -23,7 +23,7 @@ def test_cannot_act_during_event():
     model = GameModel(seed=1)
     model.perform_zone_action("forest", 0)
     model.perform_zone_action("river", 0)
-    with pytest.raises(ValueError, match="cannot"):
+    with pytest.raises(ValueError, match="不能"):
         model.perform_zone_action("farm", 0)
 
 
@@ -71,6 +71,6 @@ def test_serialization_round_trip_preserves_state():
 
 
 def test_corrupt_save_is_rejected():
-    with pytest.raises(ValueError, match="Unsupported"):
+    with pytest.raises(ValueError, match="不支援"):
         GameModel.from_dict({"version": 99})
 

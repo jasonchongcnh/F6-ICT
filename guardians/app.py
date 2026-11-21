@@ -1,4 +1,4 @@
-"""Pygame application, scenes, input, rendering, and feedback."""
+"""Pygame 應用程式、場景、輸入、渲染及回饋。"""
 
 from __future__ import annotations
 
@@ -19,24 +19,24 @@ from .ui import Button, draw_bar, draw_text, draw_wrapped
 
 ENDING_COPY = {
     "faithful": (
-        "Faithful Steward",
-        "Haven Island flourishes because creation and neighbours were cared for together. Your prudent sacrifices served the common good.",
+        "忠信的好管家",
+        "你同時關愛受造界與鄰人，使希望島欣欣向榮。你明智的犧牲守護了公益。",
     ),
     "solidarity": (
-        "A Community of Solidarity",
-        "Trust and hope bind the island together. The people are ready to continue restoring creation as one community.",
+        "團結共融的社區",
+        "信任與希望把全島連結起來。居民已準備好同心協力，繼續修復受造界。",
     ),
     "restoration": (
-        "The Living Island",
-        "Forests and waters recover through patient care. The next task is to share those gifts even more fairly.",
+        "重現生機的島嶼",
+        "森林與水源在耐心照料下逐漸復原。下一步，是更公平地分享這些恩賜。",
     ),
     "profit": (
-        "The Price of Quick Profit",
-        "Stores are full, but creation or community paid the cost. Prosperity without justice cannot sustain the common good.",
+        "短期利益的代價",
+        "倉庫雖然充足，受造界或社區卻付出了代價。缺乏公義的繁榮無法維持公益。",
     ),
     "neglect": (
-        "A Call to Begin Again",
-        "One part of shared life was neglected. Hope remains: reflect, restart, and seek a wiser balance.",
+        "重新出發的召喚",
+        "共同生活的一環被忽略了。希望仍在：反思、重來，並尋找更明智的平衡。",
     ),
 }
 
@@ -47,10 +47,18 @@ ZONE_RECTS = {
     "village": pygame.Rect(250, 345, 210, 145),
 }
 ZONE_GRID = [["forest", "river"], ["farm", "village"]]
+ZONE_LABELS = {"forest": "森林", "river": "河流", "farm": "農田", "village": "村莊"}
+
+
+def load_chinese_font(size: int, *, bold: bool = False) -> pygame.font.Font:
+    """選用可顯示繁體中文的系統字型，並在缺少時安全回退。"""
+    names = "Noto Sans CJK TC,Microsoft JhengHei,Microsoft JhengHei UI,PingFang TC,Arial Unicode MS"
+    path = pygame.font.match_font(names, bold=bold)
+    return pygame.font.Font(path, size)
 
 
 class TonePlayer:
-    """Small original procedural sound effects; gracefully silent without audio."""
+    """小型原創程式化音效；沒有音訊裝置時自動靜音。"""
 
     def __init__(self) -> None:
         self.enabled = True
@@ -84,13 +92,13 @@ class TonePlayer:
 class GameApp:
     def __init__(self, *, seed: int | None = None) -> None:
         pygame.init()
-        pygame.display.set_caption("Guardians of Creation")
+        pygame.display.set_caption("受造界守護者")
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.clock = pygame.time.Clock()
-        self.font_small = pygame.font.Font(None, 20)
-        self.font = pygame.font.Font(None, 25)
-        self.font_large = pygame.font.Font(None, 42)
-        self.font_title = pygame.font.Font(None, 59)
+        self.font_small = load_chinese_font(17)
+        self.font = load_chinese_font(21)
+        self.font_large = load_chinese_font(34, bold=True)
+        self.font_title = load_chinese_font(48, bold=True)
         self.running = True
         self.scene = "menu"
         self.model: GameModel | None = None
@@ -111,7 +119,7 @@ class GameApp:
         self.scene = "playing"
         self.selected_zone = "village"
         self.focus_index = 0
-        self.notify(f"New island — replay seed {self.model.state.seed}")
+        self.notify(f"新島嶼——重玩種子 {self.model.state.seed}")
 
     def notify(self, message: str, positive: bool = True) -> None:
         self.message = message
@@ -152,13 +160,13 @@ class GameApp:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_m:
                 self.tone.enabled = not self.tone.enabled
-                self.message = f"Sound {'on' if self.tone.enabled else 'off'}"
+                self.message = f"聲音：{'開啟' if self.tone.enabled else '關閉'}"
                 self.message_timer = FPS * 2
                 return
             if event.key == pygame.K_c:
                 self.high_contrast = not self.high_contrast
                 self.palette = HIGH_CONTRAST if self.high_contrast else COLORS
-                self.message = f"High contrast {'on' if self.high_contrast else 'off'}"
+                self.message = f"高對比模式：{'開啟' if self.high_contrast else '關閉'}"
                 self.message_timer = FPS * 2
                 return
 
@@ -196,7 +204,7 @@ class GameApp:
             try:
                 self.model = load_game()
                 self.scene = "event" if self.model.current_event else ("ending" if self.model.state.finished else "playing")
-                self.notify("Saved island loaded")
+                self.notify("已載入島嶼存檔")
             except ValueError as exc:
                 self.notify(str(exc), False)
         elif action == "instructions":
@@ -316,7 +324,7 @@ class GameApp:
         assert self.model is not None
         try:
             save_game(self.model)
-            self.notify("Progress saved to savegame.json")
+            self.notify("進度已儲存至 savegame.json")
         except ValueError as exc:
             self.notify(str(exc), False)
 
@@ -324,7 +332,7 @@ class GameApp:
         try:
             self.model = load_game()
             self.scene = "event" if self.model.current_event else ("ending" if self.model.state.finished else "playing")
-            self.notify("Saved progress loaded")
+            self.notify("已載入遊戲進度")
         except ValueError as exc:
             self.notify(str(exc), False)
 
@@ -359,38 +367,38 @@ class GameApp:
         pygame.draw.circle(self.screen, p["river"], (400, 98), 60)
         pygame.draw.circle(self.screen, p["forest"], (375, 88), 26)
         pygame.draw.circle(self.screen, p["farm"], (425, 112), 20)
-        draw_text(self.screen, "GUARDIANS OF CREATION", self.font_title, p["ink"], (400, 180), center=True)
-        draw_text(self.screen, "The Good Steward", self.font_large, p["forest"], (400, 224), center=True)
-        labels = (("Begin a New Island", "new"), ("Load Saved Island", "load"), ("How to Play", "instructions"), ("Exit", "exit"))
+        draw_text(self.screen, "受造界守護者", self.font_title, p["ink"], (400, 180), center=True)
+        draw_text(self.screen, "好管家", self.font_large, p["forest"], (400, 232), center=True)
+        labels = (("開始新的島嶼", "new"), ("載入島嶼存檔", "load"), ("遊戲說明", "instructions"), ("離開遊戲", "exit"))
         self.menu_buttons = []
         for index, (label, action) in enumerate(labels):
             button = Button(pygame.Rect(260, 278 + index * 58, 280, 44), label, action)
             button.draw(self.screen, self.font, p, focused=index == self.focus_index)
             self.menu_buttons.append(button)
-        draw_text(self.screen, "C: high contrast   M: sound", self.font_small, p["muted"], (400, 550), center=True)
+        draw_text(self.screen, "C：高對比模式　　M：聲音開關", self.font_small, p["muted"], (400, 550), center=True)
 
     def _draw_instructions(self) -> None:
         p = self.palette
-        draw_text(self.screen, "How to Care for Haven Island", self.font_large, p["ink"], (40, 35))
+        draw_text(self.screen, "如何照顧希望島", self.font_large, p["ink"], (40, 35))
         sections = [
-            ("Your mission", "Balance Ecology, Community, and Hope for 12 rounds. A faithful steward protects all three while keeping enough food and water."),
-            ("Each round", "You have two actions. Move across the four zones, then choose one of its two actions. An event follows every round; choices may have delayed consequences."),
-            ("Controls", "WASD / arrows: select zone. 1 or 2: action. Mouse works throughout. Esc: pause. F5: save. F9: load. M: sound. C: high contrast."),
-            ("Remember", "Quick profit may solve today's problem but harm the common good tomorrow. Sharing can cost supplies while building trust and hope. There is no single perfect choice."),
+            ("你的使命", "在十二個回合內平衡生態、社區及希望。忠信的好管家會同時守護三者，並確保有足夠食物和食水。"),
+            ("每個回合", "你有兩次行動。移動至四個區域之一，再選擇當地的一項行動。每回合結束時會出現事件，選擇可能帶來延後後果。"),
+            ("操作方法", "WASD／方向鍵：選擇區域。1 或 2：執行行動。亦可全程使用滑鼠。Esc：暫停。F5：儲存。F9：載入。M：聲音。C：高對比。"),
+            ("請緊記", "短期利益或能解決今天的問題，卻可能損害明天的公益。分享會消耗物資，但能建立信任與希望。遊戲沒有單一完美選擇。"),
         ]
         y = 95
         for heading, body in sections:
             draw_text(self.screen, heading, self.font, p["forest"], (55, y))
             y = draw_wrapped(self.screen, body, self.font, p["ink"], pygame.Rect(55, y + 28, 690, 90)) + 22
-        draw_text(self.screen, "Click anywhere or press Enter / Esc to return", self.font, p["river"], (400, 565), center=True)
+        draw_text(self.screen, "按畫面任何位置或按 Enter／Esc 返回", self.font, p["river"], (400, 565), center=True)
 
     def _draw_game(self) -> None:
         assert self.model is not None
         p = self.palette
         s = self.model.state
-        draw_text(self.screen, "Haven Island", self.font_large, p["ink"], (25, 22))
-        draw_text(self.screen, f"Round {min(s.round_number, MAX_ROUNDS)} / {MAX_ROUNDS}  •  Actions {s.actions_left}", self.font, p["ink"], (475, 31))
-        resources = (("Water", s.water, p["river"]), ("Food", s.food, p["farm"]), ("Wood", s.wood, p["forest"]), ("Trust", s.trust, p["village"]))
+        draw_text(self.screen, "希望島", self.font_large, p["ink"], (25, 22))
+        draw_text(self.screen, f"第 {min(s.round_number, MAX_ROUNDS)}／{MAX_ROUNDS} 回合　•　行動 {s.actions_left}", self.font, p["ink"], (475, 31))
+        resources = (("食水", s.water, p["river"]), ("食物", s.food, p["farm"]), ("木材", s.wood, p["forest"]), ("信任", s.trust, p["village"]))
         for index, (label, value, color) in enumerate(resources):
             x = 25 + index * 190
             draw_text(self.screen, f"{label}: {value}", self.font, p["ink"], (x, 78))
@@ -400,7 +408,7 @@ class GameApp:
             pygame.draw.rect(self.screen, color, rect, border_radius=15)
             border = 5 if zone == self.selected_zone else 2
             pygame.draw.rect(self.screen, p["ink"], rect, border, border_radius=15)
-            draw_text(self.screen, zone.title(), self.font_large, p["cream"], (rect.centerx, rect.top + 28), center=True)
+            draw_text(self.screen, ZONE_LABELS[zone], self.font_large, p["cream"], (rect.centerx, rect.top + 28), center=True)
             icon_y = rect.top + 84
             if zone == "forest":
                 pygame.draw.polygon(self.screen, p["cream"], [(rect.centerx, icon_y - 32), (rect.centerx - 28, icon_y + 20), (rect.centerx + 28, icon_y + 20)])
@@ -423,19 +431,19 @@ class GameApp:
         panel = pygame.Rect(480, 155, 295, 370)
         pygame.draw.rect(self.screen, p["panel"], panel, border_radius=14)
         pygame.draw.rect(self.screen, p["ink"], panel, 2, border_radius=14)
-        draw_text(self.screen, "Common Good Dashboard", self.font, p["ink"], (500, 174))
-        draw_bar(self.screen, "Ecology", s.ecology, pygame.Rect(500, 222, 250, 13), self.font_small, p, p["forest"])
-        draw_bar(self.screen, "Community", s.community, pygame.Rect(500, 267, 250, 13), self.font_small, p, p["village"])
-        draw_bar(self.screen, "Hope", s.hope, pygame.Rect(500, 312, 250, 13), self.font_small, p, p["hope"])
-        draw_text(self.screen, f"At the {self.selected_zone.title()}", self.font, p["ink"], (500, 346))
+        draw_text(self.screen, "公益儀表板", self.font, p["ink"], (500, 174))
+        draw_bar(self.screen, "生態", s.ecology, pygame.Rect(500, 222, 250, 13), self.font_small, p, p["forest"])
+        draw_bar(self.screen, "社區", s.community, pygame.Rect(500, 267, 250, 13), self.font_small, p, p["village"])
+        draw_bar(self.screen, "希望", s.hope, pygame.Rect(500, 312, 250, 13), self.font_small, p, p["hope"])
+        draw_text(self.screen, f"目前位置：{ZONE_LABELS[self.selected_zone]}", self.font, p["ink"], (500, 346))
         self.action_buttons = []
         for index, action in enumerate(ZONE_ACTIONS[self.selected_zone]):
             button = Button(pygame.Rect(500, 378 + index * 54, 250, 43), f"{index + 1}. {action['name']}", f"action-{index}", s.actions_left > 0)
             button.draw(self.screen, self.font_small, p)
             self.action_buttons.append(button)
         if s.history:
-            draw_text(self.screen, "Latest: " + s.history[-1][:82], self.font_small, p["muted"], (25, 516))
-        draw_text(self.screen, "Move: WASD/arrows  •  Choose: 1/2  •  Esc: pause  •  F5/F9: save/load", self.font_small, p["muted"], (25, 561))
+            draw_text(self.screen, "最新紀錄：" + s.history[-1][:54], self.font_small, p["muted"], (25, 516))
+        draw_text(self.screen, "移動：WASD／方向鍵　•　選擇：1／2　•　Esc：暫停　•　F5／F9：儲存／載入", self.font_small, p["muted"], (25, 561))
         for particle in self._particles:
             color = p["hope"] if particle["good"] else p["danger"]
             pygame.draw.circle(self.screen, color, (int(particle["x"]), int(particle["y"])), 3)
@@ -450,7 +458,7 @@ class GameApp:
         pygame.draw.rect(self.screen, p["panel"], card, border_radius=18)
         pygame.draw.rect(self.screen, p["ink"], card, 3, border_radius=18)
         event = self.model.current_event
-        draw_text(self.screen, "ISLAND DECISION", self.font_small, p["river"], (120, 98))
+        draw_text(self.screen, "島嶼抉擇", self.font_small, p["river"], (120, 98))
         draw_text(self.screen, event.title, self.font_large, p["ink"], (120, 125))
         draw_wrapped(self.screen, event.text, self.font, p["ink"], pygame.Rect(120, 173, 560, 70))
         self.action_buttons = []
@@ -471,8 +479,8 @@ class GameApp:
         self.screen.blit(overlay, (0, 0))
         panel = pygame.Rect(235, 120, 330, 360)
         pygame.draw.rect(self.screen, p["panel"], panel, border_radius=18)
-        draw_text(self.screen, "Paused", self.font_large, p["ink"], (400, 160), center=True)
-        actions = (("Resume", "resume"), ("Save Progress", "save"), ("Restart", "restart"), ("Main Menu", "menu"))
+        draw_text(self.screen, "遊戲暫停", self.font_large, p["ink"], (400, 160), center=True)
+        actions = (("繼續遊戲", "resume"), ("儲存進度", "save"), ("重新開始", "restart"), ("主選單", "menu"))
         self.menu_buttons = []
         for index, (label, action) in enumerate(actions):
             button = Button(pygame.Rect(275, 207 + index * 58, 250, 43), label, action)
@@ -490,13 +498,13 @@ class GameApp:
         draw_text(self.screen, title, self.font_title, p["ink"], (400, 220), center=True)
         draw_wrapped(self.screen, body, self.font, p["ink"], pygame.Rect(140, 260, 520, 100))
         s = self.model.state
-        draw_text(self.screen, f"Ecology {s.ecology}   Community {s.community}   Hope {s.hope}", self.font, p["ink"], (400, 375), center=True)
+        draw_text(self.screen, f"生態 {s.ecology}　社區 {s.community}　希望 {s.hope}", self.font, p["ink"], (400, 375), center=True)
         self.menu_buttons = []
-        for index, (label, action) in enumerate((("Try Another Seed", "restart"), ("Main Menu", "menu"))):
+        for index, (label, action) in enumerate((("使用另一種子重玩", "restart"), ("返回主選單", "menu"))):
             button = Button(pygame.Rect(260, 425 + index * 58, 280, 44), label, action)
             button.draw(self.screen, self.font, p)
             self.menu_buttons.append(button)
-        draw_text(self.screen, f"Replay seed: {s.seed}", self.font_small, p["muted"], (400, 560), center=True)
+        draw_text(self.screen, f"重玩種子：{s.seed}", self.font_small, p["muted"], (400, 560), center=True)
 
     def _draw_status_message(self) -> None:
         if not self.message or self.message_timer <= 0:

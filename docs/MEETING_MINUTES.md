@@ -1,19 +1,19 @@
-# Meeting Minutes
+# 會議紀錄
 
-> Integrity note: only real meetings should be recorded. Do not backdate or invent participants. The first entry below records the actual build session; students should add names, their own decisions, and signatures.
+> 誠信提示：只可記錄真實會議，不可補寫或倒填日期。以下 17 日項目記錄實際建立階段；學生須補上真實姓名、自己的決定及簽署。
 
-## Meeting / Build Session — 17 November 2026
+## 2026 年 11 月 17 日——Beta 建立階段
 
-- **Attendees:** _Student 1_, _Student 2_ (complete before submission)
-- **Agenda:** interpret the assigned theme; agree core loop; define technical scope; prepare beta.
-- **Decisions:** turn-based island management; 12 rounds; four zones; balance Ecology, Community, and Hope; generated assets; deterministic seeds; data-driven events.
-- **Actions:** review all AI-assisted code; conduct two-person classroom playtest; record dated video; add observed bugs; assign presentation sections.
-- **Evidence:** Git commits dated 17 November 2026 and automated test report.
+- **出席者：**學生一、學生二（提交前填寫）
+- **議程：**理解指定主題；確定核心循環；界定技術範圍；準備 Beta。
+- **決定：**十二回合島嶼管理；四個區域；平衡生態、社區和希望；程式生成素材；固定種子；JSON 事件。
+- **行動：**審閱所有 AI 協助程式；安排兩位同學試玩；錄製有日期影片；加入發現的錯誤；分配匯報內容。
+- **證據：**11 月 17 日 Git 提交及自動測試報告。
 
-## Required student entries
+## 學生必須補充的真實紀錄
 
-- 3 Nov: group formation, proposal, research plan, theme confirmation.
-- 10 Nov: prototype review and video reference.
-- 17 Nov: beta playtest with two classmates, observations, and actions.
-- 24 Nov: final review, contribution confirmation, and presentation rehearsal.
+- 11 月 3 日：組隊、計劃書、研究計劃、主題確認。
+- 11 月 10 日：原型檢討及影片資料。
+- 11 月 17 日：兩位同學的 Beta 試玩、觀察及改善行動。
+- 11 月 24 日：最終檢討、貢獻確認及匯報綵排。
 

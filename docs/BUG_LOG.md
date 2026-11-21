@@ -1,10 +1,11 @@
-# Bug and Iteration Log
+# 錯誤及迭代紀錄
 
-| Date | ID | Symptom | Root cause | Resolution | Regression evidence | Status |
+| 日期 | 編號 | 問題 | 根本原因 | 解決方法 | 回歸證據 | 狀態 |
 |---|---|---|---|---|---|---|
-| 17 Nov 2026 | ENV-01 | `pip install` failed with read-only `/home/agent/.local/lib` | Managed cloud Python does not permit user-site writes | Created repository-local `.venv`; install and tests run there | Dependency install succeeded; complete suite executed | Closed |
-| 17 Nov 2026 | TEST-01 | `pytest` executable could not import `guardians` | Console-script path did not include project root in this runtime | Standardised command as `python -m pytest` | All tests collected and passed | Closed |
-| 17 Nov 2026 | UI-01 | Audio may be unavailable on some school devices | Mixer initialisation depends on hardware/driver | `TonePlayer` falls back to silent mode without stopping play | Headless UI test uses dummy audio | Closed |
+| 2026-11-17 | ENV-01 | `pip install` 無法寫入使用者目錄 | 雲端環境的使用者目錄為唯讀 | 建立專題本地 `.venv` | 依賴成功安裝並完成測試 | 已修正 |
+| 2026-11-17 | TEST-01 | 直接執行 `pytest` 無法匯入 `guardians` | 此環境的命令路徑沒有加入專題根目錄 | 統一使用 `python -m pytest` | 所有測試成功收集及通過 | 已修正 |
+| 2026-11-17 | UI-01 | 部分電腦可能沒有音訊裝置 | Mixer 初始化依賴硬件／驅動程式 | `TonePlayer` 在失敗時自動靜音 | 無音訊模式畫面測試通過 | 已修正 |
+| 2026-11-21 | I18N-01 | Pygame 預設字型不能可靠顯示中文 | 預設點陣字型缺少 CJK 字形 | 優先選用 Noto Sans CJK TC、微軟正黑體等系統字型 | 中文冒煙測試及畫面截圖 | 已修正 |
 
-Add actual classroom playtest issues below; never invent tester observations.
+請把真實課堂試玩發現的問題加入下方，切勿虛構測試結果。
 

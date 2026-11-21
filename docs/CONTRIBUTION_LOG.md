@@ -1,8 +1,8 @@
-# Contribution Log
+# 貢獻紀錄
 
-AI-generated work is declared separately and must not be claimed as either student’s unaided work. Add verifiable student contributions below.
+AI 產生的內容已另行申報，不應被任何學生聲稱為獨立完成。請加入可驗證的真實學生貢獻。
 
-| Date | Person | Task | Evidence (commit/file/video) | Partner verification |
+| 日期 | 成員 | 工作 | 證據（提交／檔案／影片） | 組員確認 |
 |---|---|---|---|---|
 |  |  |  |  |  |
 

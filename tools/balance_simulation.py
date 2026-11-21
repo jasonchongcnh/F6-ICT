@@ -1,4 +1,4 @@
-"""Run deterministic strategy simulations and export balance evidence."""
+"""執行固定策略模擬並匯出平衡證據。"""
 
 from __future__ import annotations
 
@@ -11,6 +11,21 @@ from pathlib import Path
 from guardians.model import GameModel
 
 STRATEGIES = ("extractive", "restorative", "community", "balanced", "random")
+STRATEGY_LABELS = {
+    "extractive": "純索取",
+    "restorative": "環境修復",
+    "community": "社區優先",
+    "balanced": "固定平衡",
+    "random": "隨機多變",
+}
+ENDING_LABELS = {
+    "faithful": "忠信",
+    "solidarity": "團結",
+    "restoration": "復育",
+    "profit": "短期利益",
+    "neglect": "疏忽",
+    "unknown": "未知",
+}
 
 
 def choose_zone_action(strategy: str, rng: random.Random, turn: int) -> tuple[str, int]:
@@ -77,15 +92,18 @@ def simulate(seed: int, strategy: str) -> dict[str, int | str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--runs", type=int, default=500, help="total simulations")
-    parser.add_argument("--csv", type=Path, help="optional raw results path")
+    parser.add_argument("--runs", type=int, default=500, help="模擬總數")
+    parser.add_argument("--csv", type=Path, help="可選的原始結果路徑")
     args = parser.parse_args()
     rows = [simulate(index + 1, STRATEGIES[index % len(STRATEGIES)]) for index in range(args.runs)]
-    print(f"Balance simulations: {len(rows)}")
+    print(f"平衡模擬總數：{len(rows)}")
     for strategy in STRATEGIES:
         subset = [row for row in rows if row["strategy"] == strategy]
         endings = Counter(str(row["ending"]) for row in subset)
-        print(f"{strategy:11s}: " + ", ".join(f"{name}={count}" for name, count in sorted(endings.items())))
+        print(
+            f"{STRATEGY_LABELS[strategy]:8s}："
+            + "，".join(f"{ENDING_LABELS.get(name, name)}={count}" for name, count in sorted(endings.items()))
+        )
     if args.csv:
         args.csv.parent.mkdir(parents=True, exist_ok=True)
         with args.csv.open("w", newline="", encoding="utf-8") as handle:

@@ -1,8 +1,9 @@
-# AI Use Log
+# AI 使用紀錄
 
-Students must review, modify, test, and be able to explain every accepted item. This record declares assistance; it is not proof of student understanding.
+學生必須審閱、修改、測試並能解釋所有採用內容。此表只申報協助，不能代替學生理解。
 
-| Date | Tool | Prompt summary | Output used and student modifications | Test evidence / explanation |
+| 日期 | AI 工具 | 提示摘要 | 採用內容及學生後續責任 | 測試／解釋證據 |
 |---|---|---|---|---|
-| 17 Nov 2026 | OpenAI Codex | Create the complete Python/Pygame game and submission evidence from the teacher guideline | Initial project architecture, code, tests, and evidence documents were generated with AI assistance. Students must record their own review and any changes before submission. | Git history identifies the generated stages; automated tests and balance report are included. Students must demonstrate the code and answer Q&A. |
+| 2026-11-17 | OpenAI Codex | 按教師指引建立完整 Python／Pygame 遊戲及提交證據 | AI 協助建立初始架構、程式、測試及文件；學生須逐項審閱並記錄自己的修改 | Git 歷史、自動測試和平衡報告 |
+| 2026-11-21 | OpenAI Codex | 把整個專題翻譯成繁體中文並備份英文版 | 翻譯遊戲介面、事件、文件和證據文字；英文版以 Git 標籤及 ZIP 保留 | 中文畫面、完整回歸測試及 Git 提交 |
 

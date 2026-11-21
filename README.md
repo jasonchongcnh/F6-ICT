@@ -1,35 +1,44 @@
-# Guardians of Creation
+# 受造界守護者
 
-An offline Pygame management game for the Form 6 theme **“The Good Steward: Guardians of Creation.”** The player crosses a small island and spends two actions per round caring for its forest, river, farm, and community. Choices trade short-term resources against Ecology, Community Well-being, and Hope. The island reaches one of several endings after 12 rounds—or earlier if a vital value collapses.
+一款以中六指定主題「好管家——受造界守護者」為核心的離線 Pygame 管理遊戲。玩家在十二個回合內管理希望島，每回合把兩次有限行動分配到森林、河流、農田及村莊，在短期需要、生態、社區福祉與希望之間取得平衡。
 
-## Run
+## 安裝及執行
 
-Python 3.11+ is recommended.
-
-```bash
-python -m pip install -r requirements.txt
-python main.py
-```
-
-The game is self-contained and works offline after installation. All visuals and sound effects are generated in code; there are no third-party media assets.
-
-## Controls
-
-- `WASD` / arrow keys: move between island zones
-- `Enter` / `Space`: interact with the current zone or activate a focused button
-- Mouse: select buttons and event choices
-- `Esc`: pause or return
-- `F5`: save; `F9`: load
-- `M`: toggle sound; `C`: high-contrast mode
-
-The main menu includes instructions, new game, load, accessibility, and exit. During play, the pause menu provides save, resume, restart, and menu actions.
-
-## Development checks
+建議使用 Python 3.11 或以上版本。
 
 ```bash
-pytest -q
-python -m tools.balance_simulation --runs 500
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python main.py
 ```
 
-See `docs/` and `evidence/` for architecture, process records, tests, and submission guidance.
+Windows 可使用：
+
+```powershell
+py -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+.venv\Scripts\python main.py
+```
+
+完成安裝後，遊戲可完全離線運行。所有圖像和音效均由程式即時產生，沒有使用第三方媒體素材。
+
+## 操作方法
+
+- `WASD`／方向鍵：在島嶼區域之間移動
+- `1`／`2`、`Enter`／`Space`：執行行動或選擇按鈕
+- 滑鼠：選擇按鈕和事件選項
+- `Esc`：暫停或返回
+- `F5`：儲存；`F9`：載入
+- `M`：聲音開關；`C`：高對比模式
+
+主選單提供遊戲說明、新遊戲、載入和離開。暫停選單提供儲存、繼續、重新開始及返回主選單。
+
+## 開發驗證
+
+```bash
+.venv/bin/python -m pytest -q
+.venv/bin/python -m tools.balance_simulation --runs 500
+```
+
+架構、工程筆記、測試數據、錯誤紀錄及提交指引位於 `docs/` 和 `evidence/`。
 

@@ -1,14 +1,14 @@
-# Assigned Theme Confirmation
+# 指定主題確認表
 
-Project: **Guardians of Creation**
+專題：**受造界守護者**
 
-Assigned theme: **The Good Steward: Guardians of Creation**
+指定主題：**好管家——受造界守護者**
 
-Group members: ____________________ and ____________________
+組員：____________________ 及 ____________________
 
-The project uses the assigned theme through resource trade-offs, care for forest/river/farm/community, solidarity dilemmas, delayed environmental consequences, and balanced endings.
+本專題透過資源取捨、照顧森林／河流／農田／社區、團結抉擇、延後環境後果及平衡結局，實際運用指定主題。
 
-Teacher confirmation: ____________________
+教師確認：____________________
 
-Date: ____________________
+日期：____________________
 

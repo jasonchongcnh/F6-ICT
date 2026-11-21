@@ -1,8 +1,8 @@
-# Asset and Licence Notes
+# 素材及授權說明
 
-- Source code: original project code, with AI assistance declared in `AI_USE_LOG.md`.
-- Visuals: original geometric artwork rendered by Pygame; no external images or fonts are distributed.
-- Audio: original procedural tones generated at runtime from mathematical waveforms; no recordings or music are distributed.
-- Event text and narrative: original for this project, with AI assistance declared.
-- Pygame CE: third-party library under its own licence; it is installed as a dependency and not redistributed here.
+- 程式碼：本專題原創，AI 協助已在 `AI_USE_LOG.md` 申報。
+- 視覺素材：全部由 Pygame 繪製的原創幾何圖像，沒有分發外部圖片或字型。
+- 音效：執行時以數學波形即時產生的原創提示音，沒有外部錄音或音樂。
+- 事件文字及故事：為本專題原創，AI 協助已申報。
+- Pygame CE：第三方程式庫，依其自身授權安裝，並未包含在專題檔案內。
 

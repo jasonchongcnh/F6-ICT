@@ -1,4 +1,4 @@
-"""Guardians of Creation game package."""
+"""《受造界守護者》遊戲套件。"""
 
 __version__ = "1.0.0"
 

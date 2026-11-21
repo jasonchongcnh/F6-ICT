@@ -1,4 +1,4 @@
-"""Capture reproducible frames from the real Pygame renderer."""
+"""從實際 Pygame 渲染器擷取可重現畫面。"""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ def main() -> int:
     app.message_timer = 0
     save(app, output / "04_faithful_ending.png")
     pygame.quit()
-    print(f"Captured 4 screenshots in {output}")
+    print(f"已在 {output} 擷取 4 張截圖")
     return 0
 
 

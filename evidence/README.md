@@ -1,31 +1,30 @@
-# Evidence Package Guide
+# 證據套件指引
 
-Generated evidence is organised here, but genuine human evidence must be recorded by the students.
+## 可重現證據
 
-## Already reproducible
+- Git 紀錄：`git log --date=iso --pretty=fuller --stat`
+- 自動測試：`evidence/test_report.txt`
+- 平衡摘要及原始 CSV：`evidence/balance_report.txt`、`evidence/balance_results.csv`
+- 中文遊戲截圖：`evidence/screenshots/`
+- 架構、測試計劃、錯誤紀錄、AI 申報、計劃書及研究：`docs/`
+- 英文版：Git 標籤 `english-v1` 及 `/workspace/F6-ICT-English-Backup.zip`
 
-- Git log: `git log --date=iso --pretty=fuller --stat`
-- Test report: `evidence/test_report.txt`
-- Balance summary and raw CSV: `evidence/balance_report.txt`, `evidence/balance_results.csv`
-- Screenshots: generated from the real Pygame build in `evidence/screenshots/`
-- Architecture, test plan, bug log, AI declaration, proposal, and research in `docs/`
+## 必須由學生真實提供
 
-## Students must supply honestly
+- 有日期、未剪接的原型及 Beta／試玩影片。
+- 真實會議出席者、決定、行動項目及簽署。
+- 兩位同學的真實觀察及按校方要求取得的同意。
+- 個人貢獻及保密同儕互評。
+- 教師簽署的主題確認。
+- 兩位學生均已審閱並能解釋 AI 協助內容的證據。
 
-- Unedited dated prototype and beta/playtest videos.
-- Real meeting attendees, decisions, action items, and signatures.
-- Two classmates’ actual playtest observations and consent where required.
-- Individual contribution records and confidential peer evaluations.
-- Teacher-signed theme confirmation.
-- Evidence that both students reviewed and can explain the AI-assisted work.
+## 建議 60–90 秒中文 Beta 影片
 
-## Suggested 60–90 second beta video
-
-1. Show today’s date and the Git commit hash.
-2. Launch from the README command.
-3. Explain the three values and two actions per round.
-4. Perform a restorative action and resolve an event choice.
-5. Explain a delayed consequence and why it represents stewardship.
-6. Demonstrate F5/F9 save/load and high contrast.
-7. Keep the original unedited file and record its filename in the logbook.
+1. 顯示當日日期和 Git 提交編號。
+2. 按 README 命令啟動遊戲。
+3. 解釋生態、社區、希望及每回合兩次行動。
+4. 執行一項修復行動並處理事件。
+5. 解釋延後後果如何表達管家職分。
+6. 示範 F5／F9 存讀檔及高對比模式。
+7. 保留原始未剪接檔，並在工程筆記記錄檔名。
 

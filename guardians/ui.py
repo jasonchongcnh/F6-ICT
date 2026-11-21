@@ -1,4 +1,4 @@
-"""Reusable Pygame drawing and interaction helpers."""
+"""可重用的 Pygame 繪圖及互動工具。"""
 
 from __future__ import annotations
 
@@ -8,16 +8,15 @@ import pygame
 
 
 def wrap_text(text: str, font: pygame.font.Font, width: int) -> list[str]:
-    """Wrap text by measured pixel width."""
+    """按實際像素寬度換行，同時支援沒有空格的中日韓文字。"""
     lines: list[str] = []
     for paragraph in text.splitlines() or [""]:
-        words = paragraph.split()
         current = ""
-        for word in words:
-            candidate = f"{current} {word}".strip()
+        for character in paragraph:
+            candidate = current + character
             if current and font.size(candidate)[0] > width:
-                lines.append(current)
-                current = word
+                lines.append(current.rstrip())
+                current = character.lstrip()
             else:
                 current = candidate
         lines.append(current)

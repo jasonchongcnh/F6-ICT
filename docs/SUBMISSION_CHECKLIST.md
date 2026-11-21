@@ -1,22 +1,23 @@
-# Submission Checklist and Honest Status
+# 提交清單及真實狀態
 
-Date reviewed: 17 November 2026
+更新日期：2026 年 11 月 21 日
 
-| Deliverable | Status | Location / required action |
+| 項目 | 狀態 | 位置／所需行動 |
 |---|---|---|
-| Game source and original generated assets | Ready | `main.py`, `guardians/`, `data/` |
-| README, controls, setup | Ready | `README.md` |
-| Requirements | Ready | `requirements.txt` |
-| Engineering logbook source | Ready for student review/export | `docs/ENGINEERING_LOGBOOK.md`; add genuine missing entries, then Google Docs/PDF |
-| Meeting minutes | Partial, truthful | `docs/MEETING_MINUTES.md`; students must add real meetings |
-| AI use log | Ready, must be reviewed | `docs/AI_USE_LOG.md` |
-| Test data and bug log | Automated portion ready | `evidence/`, `docs/BUG_LOG.md`; add real playtest results |
-| Dated prototype video (10 Nov) | Missing from supplied evidence | Attach original if it exists; do not backdate |
-| Dated beta/playtest video (17 Nov) | Student action required | Record two real classmates and an unedited demo |
-| PPT/Canva, 8–12 slides | Outline ready | `docs/PRESENTATION_OUTLINE.md`; final Canva after authorization |
-| Peer evaluation | Template only | Each student completes confidentially |
-| Signed theme confirmation | Template only | Obtain teacher signature |
-| Final ZIP | Build after student records | Name `F6_Pygame_GroupXX.zip` with the real group number |
+| 中文遊戲原始碼及生成素材 | 已完成 | `main.py`、`guardians/`、`data/` |
+| 英文版備份 | 已完成 | Git 標籤 `english-v1`、`F6-ICT-English-Backup.zip` |
+| 中文 README、操作、安裝 | 已完成 | `README.md` |
+| 依賴清單 | 已完成 | `requirements.txt` |
+| 中文工程筆記來源 | 待學生審閱／匯出 | `docs/ENGINEERING_LOGBOOK.md`；補充真實證據後匯出 PDF |
+| 會議紀錄 | 部分完成 | `docs/MEETING_MINUTES.md`；學生補充真實會議 |
+| AI 使用紀錄 | 已完成，須審閱 | `docs/AI_USE_LOG.md` |
+| 測試、平衡及錯誤紀錄 | 自動部分完成 | `evidence/`、`docs/BUG_LOG.md`；加入真人試玩 |
+| 11 月 10 日原型影片 | 現有資料缺少 | 如原檔存在才附上，切勿倒填 |
+| 真人 Beta 試玩影片 | 學生須完成 | 記錄兩位真實同學及未剪接示範 |
+| Canva／PPT | 大綱及舊版 PPT 已備妥 | 更新中文文字及加入學生資料 |
+| 同儕互評 | 只有範本 | 每位學生保密填寫 |
+| 已簽署主題確認 | 只有範本 | 取得教師簽署 |
+| 最終 ZIP | 中文驗證後建立 | 使用真實組別編號命名 |
 
-The project is technically playable and tested. It is not academically complete until the human evidence, student review/understanding, identities, teacher confirmation, and final exports are genuine and attached.
+遊戲技術上可玩並經測試，但必須加入真實人類證據、學生理解、姓名、教師確認及最終匯出，才算學術上完整。
 

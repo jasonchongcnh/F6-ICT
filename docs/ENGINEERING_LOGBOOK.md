@@ -1,77 +1,80 @@
-# Engineering Logbook — Guardians of Creation
+# 工程筆記——受造界守護者
 
-This is the editable source for the final Google Docs/PDF logbook. Replace blanks only with truthful student evidence. AI assistance is declared in `AI_USE_LOG.md`.
+這是 Google Docs／PDF 工程筆記的可編輯來源。只可用真實學生證據填補空白；AI 協助見 `AI_USE_LOG.md`。
 
-## Project identity
+## 專題資料
 
-- Assigned theme: The Good Steward — Guardians of Creation
-- Members: _Student 1_ and _Student 2_
-- Development period: 3–24 November 2026
-- Final deadline: 24 November 2026, 23:59
+- 指定主題：好管家——受造界守護者
+- 組員：學生一、學生二（提交前填寫真實姓名）
+- 開發期：2026 年 11 月 3–24 日
+- 截止：2026 年 11 月 24 日 23:59
+- GitHub：https://github.com/jasonchongcnh/F6-ICT
 
-## 3 November checkpoint — student completion required
+## 11 月 3 日檢查點——學生須補充真實證據
 
-The supplied conversation contains no verifiable record from 3 November. Attach the genuine group-formation record, proposal draft, theme confirmation, research plan, and Meeting 1 notes if they exist. Do not recreate or backdate evidence.
+現有資料沒有可驗證的 11 月 3 日紀錄。如原始證據存在，請附上組隊、計劃書初稿、主題確認、研究計劃及第一次會議紀錄。不可重製或倒填日期。
 
-## 10 November checkpoint — student completion required
+## 11 月 10 日檢查點——學生須補充真實證據
 
-The supplied conversation contains no dated prototype recording from 10 November. Attach the original 30–90 second unedited video and matching code snapshot/commit if they exist. Record the filename, capture date, speakers, demonstrated features, and teacher feedback. Do not label a later recording as 10 November evidence.
+現有資料沒有 11 月 10 日的原型影片。如原始檔存在，請附上 30–90 秒未剪接影片及相符的程式快照／提交，並記錄檔名、拍攝日期、講解者、展示功能及教師回饋。不可把後來影片冒充為 10 日證據。
 
-## 17 November — beta engineering session
+## 11 月 17 日——Beta 工程階段
 
-### Goal
+### 目標
 
-Turn the assigned specification into an offline, testable Pygame management game and assemble transparent evidence.
+把指定規格製成可離線運行、可測試的 Pygame 管理遊戲，並建立透明的過程證據。
 
-### Work completed
+### 完成工作
 
-- Interpreted the mandatory mechanics and rubric.
-- Defined a 12-round loop with two actions, four zones, seven tracked resources/values, nine JSON-driven events, delayed consequences, seeded replay, save/load, and five endings.
-- Separated the Pygame scene/UI layer from the deterministic model and storage boundary.
-- Added generated visuals and procedural tones, avoiding external copyrighted assets.
-- Added start menu, instructions, map movement, dashboard, event cards, pause/restart/exit, mouse and keyboard paths, high contrast, and silent audio fallback.
-- Built automated model, storage, data validation, UI-flow, and accessibility checks.
-- Simulated 1,000 seeded games across five policies and retained raw CSV data.
-- Captured four reproducible frames from the actual renderer.
+- 建立十二回合、每回合兩次行動的核心循環。
+- 加入森林、河流、農田和村莊四區，以及七項資源／價值。
+- 建立九個 JSON 事件、延後後果、固定種子、存檔／讀檔及五個結局。
+- 分離 Pygame 場景／介面和可獨立測試的遊戲模型。
+- 以程式生成所有視覺及音效，避免外部版權素材。
+- 加入主選單、說明、地圖、儀表板、事件卡、暫停、重開、滑鼠／鍵盤、高對比及無音訊回退。
+- 完成模型、存檔、資料驗證、畫面流程及無障礙自動測試。
+- 模擬 1,000 場遊戲並保留原始 CSV。
 
-### Decisions and reasons
+### 設計決定與原因
 
-- **Turn-based:** gives players time to reflect on moral/resource trade-offs and makes replay/test evidence exact.
-- **Visible effects:** helps players understand responsibility and allows students to explain consequences during Q&A.
-- **Delayed outcomes:** shows that environmental choices extend beyond immediate profit.
-- **Balanced ending:** Ecology, Community, Hope, food, and water all matter; maximising one number is insufficient.
-- **Generated assets:** ensures offline operation and removes licensing ambiguity.
+- **回合制：**讓玩家有時間反思道德／資源取捨，也便於重現測試。
+- **顯示數值效果：**幫助玩家理解責任，亦方便答辯。
+- **延後結果：**表達環境決定的影響超越眼前利益。
+- **平衡結局：**生態、社區、希望、食物和食水都重要。
+- **程式生成素材：**確保離線運行及授權清晰。
 
-### Failure analysis and fixes
+### 失敗分析
 
-The first package install targeted a read-only managed user directory. A local `.venv` resolved this and became the documented setup. The first direct `pytest` console command did not place the project root on its import path; using `python -m pytest` fixed test discovery. Audio is made optional because school hardware may not expose a mixer.
+第一次安裝套件時，雲端 Python 的使用者目錄為唯讀；改用專題本地 `.venv` 後解決。直接執行 `pytest` 時匯入路徑不正確；改用 `python -m pytest` 後成功。由於部分學校電腦可能沒有音訊裝置，音效系統會在初始化失敗時自動靜音。
 
-### Test result
+### 測試結果
 
-Sixteen automated tests passed. The 1,000-run balance test showed pure extraction produced 200/200 neglect endings. No fixed policy guaranteed the highest faithful ending. Full counts and limitations are in `evidence/balance_report.txt`.
+十六項自動測試全部通過。1,000 次平衡模擬中，純索取策略 200／200 次得到疏忽結局；沒有任何固定策略能保證最高「忠信管家」結局。完整數據及限制見 `evidence/balance_report.txt`。
 
-### Reflection
+### 反思
 
-The most important technical insight is that UI and rules should be separated. The most important theme insight is that stewardship is not “nature points”: decisions connect creation, neighbour, trust, hope, and future scarcity. Human classroom testing is still necessary because automated strategies cannot measure clarity, fairness, or enjoyment.
+最重要的技術學習是分離介面與規則。最重要的主題學習是：管家職分不只是「自然分數」，而是受造界、鄰人、信任、希望及未來匱乏之間的連結。自動策略不能衡量清晰度、公平感或樂趣，因此仍需要真實課堂試玩。
 
-## 17 November classroom playtest — student completion required
+## 11 月 21 日——繁體中文版本
 
-Record at least two real classmates, date/device, seed, route taken, ending, comments, observed confusion, FPS/technical issues, and changes made. Link the genuine unedited video. Do not invent results.
+先以 `english-v1` Git 標籤和 `F6-ICT-English-Backup.zip` 保存英文版，再把遊戲介面、九個事件、錯誤訊息、說明文件及證據文字翻譯成繁體中文。加入 CJK 系統字型選擇，以支援 Noto Sans CJK TC、微軟正黑體等學校常見字型。翻譯後重新執行完整測試及中文畫面檢查。
 
-## 24 November final review — complete after real review
+## 課堂試玩——學生須完成
 
-Record final student changes, full school-computer test, presentation rehearsal, member contributions, remaining limitations, signed theme confirmation, and final submission filenames.
+記錄至少兩位真實同學、日期／裝置、種子、所選路線、結局、意見、理解困難、效能問題及改善。附上真實未剪接影片，不可虛構。
 
-## Evidence index
+## 11 月 24 日最終檢討——完成後填寫
 
-- Git history: four staged milestones (proposal, model, interface, validation/evidence).
-- Architecture: `docs/ARCHITECTURE.md`
-- Research: `docs/RESEARCH.md`
-- Bug log: `docs/BUG_LOG.md`
-- Test plan: `docs/TEST_PLAN.md`
-- Automated results: `evidence/test_report.txt`
-- Balance data: `evidence/balance_report.txt`, `evidence/balance_results.csv`
-- Screenshots: `evidence/screenshots/`
-- AI declaration: `docs/AI_USE_LOG.md`
-- Meeting and contribution sources: `docs/MEETING_MINUTES.md`, `docs/CONTRIBUTION_LOG.md`
+記錄最終學生修改、學校電腦測試、匯報綵排、成員貢獻、限制、已簽署主題確認及最後提交檔名。
+
+## 證據索引
+
+- 架構：`docs/ARCHITECTURE.md`
+- 研究：`docs/RESEARCH.md`
+- 錯誤紀錄：`docs/BUG_LOG.md`
+- 測試計劃：`docs/TEST_PLAN.md`
+- 自動結果：`evidence/test_report.txt`
+- 平衡資料：`evidence/balance_report.txt`、`evidence/balance_results.csv`
+- 截圖：`evidence/screenshots/`
+- AI 申報：`docs/AI_USE_LOG.md`
 

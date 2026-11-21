@@ -1,28 +1,20 @@
-# Test Plan and Feasibility
+# 測試計劃及可行性
 
-Date: 17 November 2026
+日期：2026 年 11 月 21 日更新
 
-## Automated checks
-
-| Area | Check | Expected result |
+| 範圍 | 測試 | 預期結果 |
 |---|---|---|
-| Event data | Validate unique IDs, 2–4 choices, legal stats, delayed effects | Shipped JSON loads; malformed stats fail clearly |
-| Core loop | Two actions open an event; choice advances round | State transitions occur once and in order |
-| Rules | Values clamp to 0–100; invalid commands fail | No invalid dashboard values or actions during events |
-| Replay | Same seed creates same event deck | Exact event order is reproducible |
-| Save/load | Round trip and malformed/missing files | State preserved; friendly errors returned |
-| Endings | Automated full playthrough | One of five named endings reached within 12 rounds |
-| UI flow | Menu → play → event → next round renders under dummy display | No display-dependent crash |
-| Accessibility | Keyboard toggles contrast and sound | Both modes change without leaving the scene |
-| Smoke | Compile all modules and render screenshot | Clean exit and valid 800×600 image |
+| 事件資料 | 唯一 ID、2–4 選項、合法數值、延後效果 | 正式 JSON 成功載入，錯誤資料清晰失敗 |
+| 核心循環 | 兩次行動開啟事件，選項推進回合 | 狀態只按正確次序轉換一次 |
+| 規則 | 數值限制於 0–100；禁止無效命令 | 儀表板沒有無效數值；事件期間不能行動 |
+| 重玩 | 相同種子產生相同事件次序 | 流程可精確重現 |
+| 存檔 | 往返保存、遺失／損壞檔案 | 狀態完整保存並顯示友善錯誤 |
+| 結局 | 自動完成遊戲 | 十二回合內取得五種指定結局之一 |
+| 介面 | 主選單→遊戲→事件→下一回合 | 無視窗環境亦能渲染，不會崩潰 |
+| 無障礙 | 高對比和聲音快捷鍵 | 不離開場景即可切換 |
+| 中文 | CJK 字型、事件文字及截圖 | 所有中文字清晰顯示，沒有方格字 |
 
-Run: `.venv/bin/python -m pytest -q`
+執行：`.venv/bin/python -m pytest -q`
 
-## Manual classroom tests still required
-
-Real-user evidence cannot be manufactured. Two classmates should test keyboard and mouse paths, readability, decision clarity, save/load, and a complete ending. Record tester names/consent as required by school policy, date, device, seed, observations, and changes. Capture a genuine dated video showing the testers and game.
-
-## Performance and feasibility
-
-The app targets 60 FPS at 800×600. It uses primitive drawing, system fonts, tiny JSON data, and no network or external assets. The model is lightweight enough for hundreds of headless sessions. Main risks are missing Pygame on a school PC, audio-device availability, and students being unable to explain AI-assisted code. Mitigations: pinned requirements, silent audio fallback, offline assets, README, architecture notes, tests, and student code review/Q&A practice.
+真實使用者測試不可由自動化代替。兩位同學須測試鍵盤／滑鼠、可讀性、抉擇清晰度、存檔及完整結局，並保留有日期影片和實際觀察。
 

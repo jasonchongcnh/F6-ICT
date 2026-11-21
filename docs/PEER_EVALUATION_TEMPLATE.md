@@ -1,18 +1,18 @@
-# Confidential Peer Evaluation Template
+# 保密同儕互評表
 
-Evaluator: __________  Partner: __________  Date: __________
+評分者：__________　組員：__________　日期：__________
 
-Rate contribution, accountability, communication, and task completion using S/A/B/C/D. Give evidence rather than friendship-based judgements.
+按貢獻、責任感、溝通及工作完成情況，以 S／A／B／C／D 評級。請提供具體證據，不應按友情評分。
 
-Grade: ____
+評級：____
 
-Specific contributions observed:
-
-________________________________________________________________
-
-One strength and one improvement:
+觀察到的具體貢獻：
 
 ________________________________________________________________
 
-Signature: ____________________
+一項優點及一項可改善之處：
+
+________________________________________________________________
+
+簽署：____________________
 

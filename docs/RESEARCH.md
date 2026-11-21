@@ -1,18 +1,18 @@
-# Research, Benchmarks, and Trade-offs
+# 研究、競品及取捨分析
 
-Date: 17 November 2026
+日期：2026 年 11 月 17 日
 
-| Reference | Useful idea | Limitation for this project | Decision |
+| 參考作品 | 可借鑑之處 | 對本專題的限制 | 採用決定 |
 |---|---|---|---|
-| *Reigns* | Short event cards make consequences easy to understand | Binary swipes can hide system depth | Use concise event cards, but show exact resource/value effects |
-| *Mini Metro* | Clean visual language and systems that interact | Real-time pressure could reduce reflection | Use a calm turn-based structure and readable dashboard |
-| *Frostpunk* | Moral choices connect survival and community values | Tone and complexity are too severe for the audience | Keep dilemmas age-appropriate and hopeful; sacrifice matters without graphic content |
+| *Reigns* | 簡短事件卡令後果容易理解 | 二選一可能掩蓋系統深度 | 使用簡潔事件卡，同時顯示實際數值效果 |
+| *Mini Metro* | 清晰視覺語言和互動系統 | 即時壓力會減少反思時間 | 採用平靜的回合制結構和清楚儀表板 |
+| *Frostpunk* | 道德選擇連結生存與社區 | 氣氛和複雜度對目標年齡過重 | 保持正面、適齡，讓犧牲仍有意義 |
 
-## Main trade-offs
+## 主要取捨
 
-- **Turn-based over timed:** easier to explain, test, save, and make accessible; less action-oriented.
-- **Generated shapes over downloaded art:** entirely original and offline-safe; less visually detailed.
-- **Visible numeric effects over hidden outcomes:** supports learning and verification; reduces mystery.
-- **Seeded randomness:** enables replay and exact bug reproduction while preserving variety.
-- **JSON event data:** non-programmers can tune content; validation code is required to prevent malformed events.
+- **回合制而非限時：**較容易反思、測試、儲存和照顧無障礙需要，但動作感較低。
+- **程式生成圖像而非下載素材：**完全原創、離線安全、沒有版權風險，但細節較少。
+- **顯示數值而非隱藏後果：**有利學習及答辯，但神秘感較低。
+- **固定隨機種子：**保留重玩變化，同時可精確重現錯誤。
+- **JSON 事件資料：**容易調整內容和數值，但必須加入資料驗證。
 

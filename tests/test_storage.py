@@ -16,13 +16,13 @@ def test_save_and_load(tmp_path):
 
 
 def test_missing_save_has_friendly_error(tmp_path):
-    with pytest.raises(ValueError, match="No saved game"):
+    with pytest.raises(ValueError, match="找不到遊戲存檔"):
         load_game(tmp_path / "missing.json")
 
 
 def test_malformed_json_has_friendly_error(tmp_path):
     path = tmp_path / "broken.json"
     path.write_text("not json", encoding="utf-8")
-    with pytest.raises(ValueError, match="Could not read"):
+    with pytest.raises(ValueError, match="無法讀取存檔"):
         load_game(path)
 

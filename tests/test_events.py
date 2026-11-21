@@ -22,6 +22,6 @@ def test_invalid_stat_is_rejected(tmp_path):
         ]),
         encoding="utf-8",
     )
-    with pytest.raises(ValueError, match="invalid effect"):
+    with pytest.raises(ValueError, match="無效效果"):
         load_events(path)
 

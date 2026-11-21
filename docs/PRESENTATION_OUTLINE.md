@@ -1,15 +1,15 @@
-# Canva / PPT Outline (10 Slides)
+# Canva／PPT 匯報大綱（10 頁）
 
-1. **Guardians of Creation** — group names, class, assigned theme, one-sentence game pitch.
-2. **Design intent** — target player, 12-round core loop, measurable goals, screenshot.
-3. **Theme in the mechanics** — stewardship, common good, solidarity, prudence; choice/consequence examples.
-4. **Research and trade-offs** — Reigns, Mini Metro, Frostpunk comparison; turn-based and generated-assets decisions.
-5. **System architecture** — model/UI/events/storage/testing diagram and data flow.
-6. **Core code** — explain one zone action, one delayed event, clamping, and ending logic in your own words.
-7. **Interface and accessibility** — map, dashboard, event card, keyboard/mouse, high contrast, audio fallback.
-8. **Testing and balance** — automated counts, five strategy results, real playtest observations, bugs fixed.
-9. **Iterations and Git evidence** — proposal → simulation → UI → validation; dated videos and meaningful commits.
-10. **Lessons and demonstration** — what each member learned, limitations, future changes, QR/link or live demo plan.
+1. **受造界守護者**——組員、班別、指定主題、一句遊戲介紹。
+2. **設計初衷**——目標玩家、十二回合核心循環、可量度目標、截圖。
+3. **主題融入玩法**——管家職分、公益、團結、明智及選擇／後果例子。
+4. **研究與取捨**——比較 *Reigns*、*Mini Metro*、*Frostpunk*；解釋回合制和生成素材。
+5. **系統架構**——模型／介面／事件／存檔／測試的資料流程。
+6. **核心程式**——用自己的說話解釋區域行動、延後事件、數值限制及結局邏輯。
+7. **介面與無障礙**——地圖、儀表板、事件卡、鍵盤／滑鼠、高對比、音訊回退。
+8. **測試與平衡**——測試數目、五種策略、真實試玩觀察及已修正錯誤。
+9. **迭代與 Git 證據**——計劃→模型→介面→驗證→中文化；有日期影片及提交。
+10. **學習與示範**——每位成員的學習、限制、未來改善及現場示範。
 
-Keep text concise. Use genuine game screenshots and charts from the CSV. Both members should present and prepare to explain the model/UI separation, save validation, seeded replay, and why the faithful ending needs balance.
+文字宜精簡，使用真實遊戲截圖及 CSV 圖表。兩位成員均須能解釋模型／介面分離、存檔驗證、固定種子及平衡結局。
 

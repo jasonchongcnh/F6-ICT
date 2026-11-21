@@ -1,196 +1,90 @@
 [
   {
     "id": "drought",
-    "title": "A Season Without Rain",
-    "text": "The reservoir is shrinking. Farmers ask for water, while the wetland also needs protection.",
+    "title": "久旱無雨",
+    "text": "水庫水位不斷下降。農民需要灌溉用水，濕地也需要保護。",
     "choices": [
-      {
-        "label": "Share water fairly",
-        "description": "Everyone accepts a smaller ration.",
-        "effects": {"water": -10, "community": 7, "trust": 6, "hope": 3}
-      },
-      {
-        "label": "Protect the wetland",
-        "description": "Endure scarcity now so the water cycle can recover.",
-        "effects": {"water": -13, "ecology": 9, "hope": 4},
-        "delayed": {"rounds": 2, "message": "The protected wetland holds new rainfall", "effects": {"water": 14, "ecology": 3}}
-      },
-      {
-        "label": "Sell private access",
-        "description": "Gain supplies, but exclude neighbours.",
-        "effects": {"food": 10, "water": -5, "community": -11, "trust": -10}
-      }
+      {"label": "公平分配食水", "description": "每個人都接受較少的配給。", "effects": {"water": -10, "community": 7, "trust": 6, "hope": 3}},
+      {"label": "保護濕地", "description": "現在忍受缺水，讓水循環得以恢復。", "effects": {"water": -13, "ecology": 9, "hope": 4}, "delayed": {"rounds": 2, "message": "受保護的濕地儲存了新一輪雨水", "effects": {"water": 14, "ecology": 3}}},
+      {"label": "出售私人取水權", "description": "獲得物資，卻把鄰人拒諸門外。", "effects": {"food": 10, "water": -5, "community": -11, "trust": -10}}
     ]
   },
   {
     "id": "factory_offer",
-    "title": "The Factory Offer",
-    "text": "A company offers quick supplies if it may release waste near the river.",
+    "title": "工廠的提議",
+    "text": "一間公司願意提供大量物資，條件是容許它在河流附近排放廢物。",
     "choices": [
-      {
-        "label": "Accept without limits",
-        "description": "Receive plenty today and leave pollution for tomorrow.",
-        "effects": {"food": 16, "wood": 10, "ecology": -16, "trust": -5},
-        "delayed": {"rounds": 2, "message": "Pollution spreads downstream", "effects": {"water": -14, "community": -7, "hope": -6}}
-      },
-      {
-        "label": "Require clean methods",
-        "description": "A smaller agreement protects the common good.",
-        "effects": {"food": 7, "wood": 4, "ecology": -2, "trust": 7}
-      },
-      {
-        "label": "Build a local cooperative",
-        "description": "Sacrifice materials to create shared work.",
-        "effects": {"wood": -8, "community": 9, "hope": 8, "trust": 6},
-        "delayed": {"rounds": 3, "message": "The cooperative shares its first harvest", "effects": {"food": 12, "community": 3}}
-      }
+      {"label": "毫無限制地接受", "description": "今天物資充足，明天才面對污染。", "effects": {"food": 16, "wood": 10, "ecology": -16, "trust": -5}, "delayed": {"rounds": 2, "message": "污染擴散至下游", "effects": {"water": -14, "community": -7, "hope": -6}}},
+      {"label": "要求採用潔淨方法", "description": "較小規模的協議能保護公益。", "effects": {"food": 7, "wood": 4, "ecology": -2, "trust": 7}},
+      {"label": "成立本地合作社", "description": "犧牲部分物資，創造共享的工作機會。", "effects": {"wood": -8, "community": 9, "hope": 8, "trust": 6}, "delayed": {"rounds": 3, "message": "合作社分享第一批收成", "effects": {"food": 12, "community": 3}}}
     ]
   },
   {
     "id": "neighbour_fire",
-    "title": "A Neighbour's House Fire",
-    "text": "A family has lost its home. Rebuilding will consume supplies saved for the island.",
+    "title": "鄰居家中失火",
+    "text": "一個家庭失去了住所。重建房屋會消耗原本為島嶼儲備的物資。",
     "choices": [
-      {
-        "label": "Rebuild together",
-        "description": "Give wood and food; no neighbour stands alone.",
-        "effects": {"wood": -12, "food": -6, "community": 13, "hope": 10, "trust": 8}
-      },
-      {
-        "label": "Offer temporary shelter",
-        "description": "Provide enough help without exhausting reserves.",
-        "effects": {"food": -4, "community": 7, "hope": 5, "trust": 4}
-      },
-      {
-        "label": "Protect our own stores",
-        "description": "Keep every resource, but abandon solidarity.",
-        "effects": {"community": -12, "hope": -9, "trust": -10}
-      }
+      {"label": "合力重建家園", "description": "付出木材和食物，不讓任何鄰人孤立無援。", "effects": {"wood": -12, "food": -6, "community": 13, "hope": 10, "trust": 8}},
+      {"label": "提供臨時住所", "description": "在不耗盡儲備的情況下提供足夠援助。", "effects": {"food": -4, "community": 7, "hope": 5, "trust": 4}},
+      {"label": "只保護自己的儲備", "description": "保留所有資源，卻放棄團結互助。", "effects": {"community": -12, "hope": -9, "trust": -10}}
     ]
   },
   {
     "id": "forest_pests",
-    "title": "Pests in the Forest",
-    "text": "Insects threaten young trees. A strong chemical is fast; patient restoration is safer.",
+    "title": "森林蟲害",
+    "text": "害蟲威脅幼樹。強力農藥見效快，耐心恢復生物多樣性則更安全。",
     "choices": [
-      {
-        "label": "Use strong chemicals",
-        "description": "Save timber now but harm other species.",
-        "effects": {"wood": 12, "ecology": -13, "water": -5}
-      },
-      {
-        "label": "Restore biodiversity",
-        "description": "Use timber to create habitats for natural predators.",
-        "effects": {"wood": -7, "ecology": 12, "hope": 4},
-        "delayed": {"rounds": 2, "message": "Birds return and control the pests", "effects": {"wood": 9, "ecology": 4}}
-      }
+      {"label": "使用強力農藥", "description": "立即保住木材，卻傷害其他物種。", "effects": {"wood": 12, "ecology": -13, "water": -5}},
+      {"label": "恢復生物多樣性", "description": "利用木材為害蟲的天敵建造棲息地。", "effects": {"wood": -7, "ecology": 12, "hope": 4}, "delayed": {"rounds": 2, "message": "鳥類回歸並控制害蟲", "effects": {"wood": 9, "ecology": 4}}}
     ]
   },
   {
     "id": "harvest_surplus",
-    "title": "A Surplus Harvest",
-    "text": "The farm has more food than expected. The island must decide who benefits.",
+    "title": "豐收有餘",
+    "text": "農田的收成超出預期。島民必須決定誰能分享這份成果。",
     "choices": [
-      {
-        "label": "Share with families",
-        "description": "Distribute the surplus according to need.",
-        "effects": {"food": 5, "community": 10, "trust": 7, "hope": 5}
-      },
-      {
-        "label": "Save seed and soil",
-        "description": "Prepare for future seasons.",
-        "effects": {"food": 7, "ecology": 7, "hope": 3},
-        "delayed": {"rounds": 3, "message": "Saved seed strengthens the next harvest", "effects": {"food": 12}}
-      },
-      {
-        "label": "Sell at the highest price",
-        "description": "Build reserves while poorer families struggle.",
-        "effects": {"food": 15, "wood": 6, "community": -8, "trust": -8}
-      }
+      {"label": "與各家庭分享", "description": "按照需要分配多出的糧食。", "effects": {"food": 5, "community": 10, "trust": 7, "hope": 5}},
+      {"label": "保存種子並保養土壤", "description": "為未來的收成作準備。", "effects": {"food": 7, "ecology": 7, "hope": 3}, "delayed": {"rounds": 3, "message": "保存的種子帶來更豐盛的收成", "effects": {"food": 12}}},
+      {"label": "以最高價格出售", "description": "增加儲備，卻令貧困家庭更加艱難。", "effects": {"food": 15, "wood": 6, "community": -8, "trust": -8}}
     ]
   },
   {
     "id": "storm",
-    "title": "Storm Over Haven Island",
-    "text": "Heavy winds approach. There is not enough time to protect every place equally.",
+    "title": "風暴迫近希望島",
+    "text": "強風吹襲在即，時間不足以同等保護每個地方。",
     "choices": [
-      {
-        "label": "Protect vulnerable homes",
-        "description": "Use timber where people face the greatest danger.",
-        "effects": {"wood": -10, "community": 10, "trust": 9, "hope": 5}
-      },
-      {
-        "label": "Strengthen the riverbank",
-        "description": "Protect homes and habitats through natural barriers.",
-        "effects": {"wood": -7, "ecology": 8, "water": 6, "community": 4}
-      },
-      {
-        "label": "Protect the storehouse",
-        "description": "Preserve supplies but leave outer homes exposed.",
-        "effects": {"food": 6, "wood": 5, "community": -8, "hope": -7}
-      }
+      {"label": "保護脆弱家庭", "description": "把木材用於面對最大危險的居民。", "effects": {"wood": -10, "community": 10, "trust": 9, "hope": 5}},
+      {"label": "鞏固河岸", "description": "以天然屏障同時保護家園與棲息地。", "effects": {"wood": -7, "ecology": 8, "water": 6, "community": 4}},
+      {"label": "保護倉庫", "description": "保留物資，卻讓外圍家庭暴露於風險之中。", "effects": {"food": 6, "wood": 5, "community": -8, "hope": -7}}
     ]
   },
   {
     "id": "new_families",
-    "title": "New Families Arrive",
-    "text": "Families displaced by flooding ask to join the community.",
+    "title": "新家庭來到島上",
+    "text": "因水災流離失所的家庭請求加入社區。",
     "choices": [
-      {
-        "label": "Welcome and share",
-        "description": "Use supplies and invite everyone to contribute.",
-        "effects": {"food": -9, "water": -7, "community": 11, "hope": 10, "trust": 7},
-        "delayed": {"rounds": 2, "message": "New neighbours contribute skills", "effects": {"food": 7, "wood": 7, "community": 3}}
-      },
-      {
-        "label": "Welcome a smaller group",
-        "description": "Balance hospitality with current capacity.",
-        "effects": {"food": -5, "water": -4, "community": 6, "hope": 5}
-      },
-      {
-        "label": "Close the shore",
-        "description": "Keep supplies but turn neighbours away.",
-        "effects": {"community": -9, "hope": -11, "trust": -7}
-      }
+      {"label": "歡迎並分享物資", "description": "付出物資，並邀請所有人一起貢獻。", "effects": {"food": -9, "water": -7, "community": 11, "hope": 10, "trust": 7}, "delayed": {"rounds": 2, "message": "新鄰居以技能回饋社區", "effects": {"food": 7, "wood": 7, "community": 3}}},
+      {"label": "接納較少家庭", "description": "在款待他人與現有承受能力之間取得平衡。", "effects": {"food": -5, "water": -4, "community": 6, "hope": 5}},
+      {"label": "封閉海岸", "description": "保留物資，卻把鄰人拒諸門外。", "effects": {"community": -9, "hope": -11, "trust": -7}}
     ]
   },
   {
     "id": "quiet_spring",
-    "title": "The Quiet Spring",
-    "text": "A clear spring is discovered in the forest. It can be protected or exploited.",
+    "title": "寧靜的泉源",
+    "text": "森林中發現了一處清澈泉源。大家可以保護它，也可以加以開發。",
     "choices": [
-      {
-        "label": "Create a shared reserve",
-        "description": "Protect the source and guarantee fair access.",
-        "effects": {"water": 8, "ecology": 8, "community": 6, "trust": 6}
-      },
-      {
-        "label": "Bottle and sell it",
-        "description": "Gain resources quickly from a common gift.",
-        "effects": {"water": 15, "wood": 8, "ecology": -10, "community": -6}
-      }
+      {"label": "設立共享保護區", "description": "保護水源，並確保人人都能公平取用。", "effects": {"water": 8, "ecology": 8, "community": 6, "trust": 6}},
+      {"label": "裝瓶出售", "description": "從共同恩賜中快速獲取資源。", "effects": {"water": 15, "wood": 8, "ecology": -10, "community": -6}}
     ]
   },
   {
     "id": "council_dispute",
-    "title": "A Divided Council",
-    "text": "The council argues over whether farms or habitats should receive the next water release.",
+    "title": "議會出現分歧",
+    "text": "議會爭論下一輪供水應優先給農田還是自然棲息地。",
     "choices": [
-      {
-        "label": "Hold a listening circle",
-        "description": "Spend time seeking a fair compromise.",
-        "effects": {"water": -4, "community": 9, "trust": 10, "hope": 5}
-      },
-      {
-        "label": "Prioritise farms",
-        "description": "Secure food now while habitats dry.",
-        "effects": {"food": 11, "water": -5, "ecology": -8, "trust": -3}
-      },
-      {
-        "label": "Prioritise habitats",
-        "description": "Restore nature while accepting a smaller harvest.",
-        "effects": {"food": -7, "ecology": 11, "hope": 4}
-      }
+      {"label": "舉行聆聽會議", "description": "花時間尋求公平的折衷方案。", "effects": {"water": -4, "community": 9, "trust": 10, "hope": 5}},
+      {"label": "優先供水給農田", "description": "立即保障食物，卻讓棲息地乾涸。", "effects": {"food": 11, "water": -5, "ecology": -8, "trust": -3}},
+      {"label": "優先保護棲息地", "description": "恢復自然環境，同時接受較少的收成。", "effects": {"food": -7, "ecology": 11, "hope": 4}}
     ]
   }
 ]
