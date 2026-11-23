@@ -4,7 +4,32 @@
 
 ## 安裝及執行
 
-建議使用 Python 3.11 或以上版本。
+本專題使用 Pygame CE 2.5.6，支援 **Python 3.11、3.12 或 3.13**。請勿使用目前不相容的 Anaconda Python 3.14，否則 Pygame 的字型模組可能無法載入。
+
+### macOS（建議方法）
+
+在 Terminal 進入專題資料夾後執行：
+
+```bash
+chmod +x setup_macos.command
+./setup_macos.command
+```
+
+安裝程式會尋找 Python 3.11–3.13、建立獨立的 `.venv-mac`、安裝 Pygame，然後啟動遊戲。以後可用：
+
+```bash
+.venv-mac/bin/python main.py
+```
+
+如果 Mac 只有 Anaconda Python 3.14，先安裝相容版本：
+
+```bash
+brew install python@3.12
+```
+
+或從 [python.org 的 macOS 下載頁](https://www.python.org/downloads/macos/) 安裝 Python 3.12／3.13，再重新執行 `setup_macos.command`。
+
+### Linux／其他 Unix 系統
 
 ```bash
 python -m venv .venv
@@ -12,7 +37,7 @@ python -m venv .venv
 .venv/bin/python main.py
 ```
 
-Windows 可使用：
+### Windows
 
 ```powershell
 py -m venv .venv
@@ -21,6 +46,10 @@ py -m venv .venv
 ```
 
 完成安裝後，遊戲可完全離線運行。所有圖像和音效均由程式即時產生，沒有使用第三方媒體素材。
+
+## macOS 常見問題
+
+如看到 `font module not available`、`partially initialized module 'pygame.font'` 或 `NotImplementedError`，代表執行了不相容的 Python／Pygame 組合。不要在 Anaconda Python 3.14 直接執行 `python main.py`；請使用上述 `.venv-mac/bin/python main.py`。
 
 ## 操作方法
 

@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .venv/
+.venv-mac/
 .coverage
 savegame.json
 evidence/videos/*.mp4
