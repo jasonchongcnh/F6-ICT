@@ -5,7 +5,24 @@ os.environ.setdefault("SDL_AUDIODRIVER", "dummy")
 
 import pygame
 
-from guardians.app import GameApp
+from pathlib import Path
+
+from guardians.app import GameApp, find_chinese_font_path, load_chinese_font
+
+
+def test_chinese_font_is_a_real_font_file_and_renders_text():
+    font_path = find_chinese_font_path()
+    assert Path(font_path).is_file()
+    font = load_chinese_font(24)
+    rendered = font.render("受造界守護者", True, (0, 0, 0))
+    assert rendered.get_width() > 60
+    assert rendered.get_height() > 10
+
+
+def test_macos_pingfang_path_is_preferred_when_present(monkeypatch):
+    pingfang = "/System/Library/Fonts/PingFang.ttc"
+    monkeypatch.setattr(Path, "is_file", lambda path: str(path) == pingfang)
+    assert find_chinese_font_path() == pingfang
 
 
 def test_menu_new_game_and_first_round_render():

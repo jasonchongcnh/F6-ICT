@@ -51,6 +51,12 @@ py -m venv .venv
 
 如看到 `font module not available`、`partially initialized module 'pygame.font'` 或 `NotImplementedError`，代表執行了不相容的 Python／Pygame 組合。不要在 Anaconda Python 3.14 直接執行 `python main.py`；請使用上述 `.venv-mac/bin/python main.py`。
 
+如中文顯示為方格，請先拉取 2026 年 11 月 23 日的最新修正。新版會直接載入 macOS 內置的 `/System/Library/Fonts/PingFang.ttc`，不再依賴在部分 Mac 上失效的 `pygame.font.match_font()`。可用以下命令確認字型存在：
+
+```bash
+ls -l /System/Library/Fonts/PingFang.ttc
+```
+
 ## 操作方法
 
 - `WASD`／方向鍵：在島嶼區域之間移動

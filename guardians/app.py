@@ -49,12 +49,57 @@ ZONE_RECTS = {
 ZONE_GRID = [["forest", "river"], ["farm", "village"]]
 ZONE_LABELS = {"forest": "森林", "river": "河流", "farm": "農田", "village": "村莊"}
 
+CHINESE_FONT_PATHS = {
+    "regular": (
+        # macOS 內置字型；pygame.font.match_font 在部分 Mac 找不到 PingFang。
+        "/System/Library/Fonts/PingFang.ttc",
+        "/System/Library/Fonts/STHeiti Light.ttc",
+        "/System/Library/Fonts/Supplemental/Songti.ttc",
+        "/Library/Fonts/Arial Unicode.ttf",
+        # Windows 內置繁體中文字型。
+        "C:/Windows/Fonts/msjh.ttc",
+        "C:/Windows/Fonts/mingliu.ttc",
+        # Linux／Codex 雲端環境。
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc",
+    ),
+    "bold": (
+        "/System/Library/Fonts/PingFang.ttc",
+        "/System/Library/Fonts/STHeiti Medium.ttc",
+        "/System/Library/Fonts/Supplemental/Songti.ttc",
+        "C:/Windows/Fonts/msjhbd.ttc",
+        "C:/Windows/Fonts/msjh.ttc",
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+        "/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc",
+    ),
+}
+
+
+def find_chinese_font_path(*, bold: bool = False) -> str:
+    """直接尋找跨平台中文字型；避免 macOS 的 fontconfig 探測失敗。"""
+    style = "bold" if bold else "regular"
+    for candidate in CHINESE_FONT_PATHS[style]:
+        if Path(candidate).is_file():
+            return candidate
+
+    names = "Noto Sans CJK TC,Microsoft JhengHei,PingFang TC,Arial Unicode MS"
+    matched = pygame.font.match_font(names, bold=bold)
+    if matched and Path(matched).is_file():
+        return matched
+
+    raise RuntimeError(
+        "找不到可顯示繁體中文的字型。macOS 應內置 /System/Library/Fonts/PingFang.ttc；"
+        "請確認該檔案存在，或安裝 Noto Sans CJK TC。"
+    )
+
 
 def load_chinese_font(size: int, *, bold: bool = False) -> pygame.font.Font:
-    """選用可顯示繁體中文的系統字型，並在缺少時安全回退。"""
-    names = "Noto Sans CJK TC,Microsoft JhengHei,Microsoft JhengHei UI,PingFang TC,Arial Unicode MS"
-    path = pygame.font.match_font(names, bold=bold)
-    return pygame.font.Font(path, size)
+    """選用可顯示繁體中文的系統字型，不回退至缺字的預設字型。"""
+    if not pygame.font.get_init():
+        pygame.font.init()
+    font = pygame.font.Font(find_chinese_font_path(bold=bold), size)
+    font.set_bold(bold)
+    return font
 
 
 class TonePlayer:
