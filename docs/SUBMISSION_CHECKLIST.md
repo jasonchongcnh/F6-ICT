@@ -5,6 +5,7 @@
 | 項目 | 狀態 | 位置／所需行動 |
 |---|---|---|
 | 中文遊戲原始碼及生成素材 | 已完成 | `main.py`、`guardians/`、`data/` |
+| 完整專題計劃書 | 已產生，待學生核實／簽署 | `docs/FULL_PROJECT_PROPOSAL.md`、`受造界守護者_完整專題計劃書.docx` |
 | 英文版備份 | 已完成 | Git 標籤 `english-v1`、`F6-ICT-English-Backup.zip` |
 | 中文 README、操作、安裝 | 已完成 | `README.md` |
 | 依賴清單 | 已完成 | `requirements.txt` |
