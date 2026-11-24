@@ -22,3 +22,7 @@ tools/balance_simulation.py——無視窗策略模擬器
 
 模型完全不依賴 Pygame，因此測試和數百次模擬可快速執行，介面亦不會暗中改變規則。
 
+## 跨平台字型及啟動
+
+`main.py` 在匯入 Pygame 應用程式前驗證 Python 3.11–3.13；不相容版本會顯示可執行的 macOS 指引。`setup_macos.command` 建立獨立 `.venv-mac`。`GameApp` 不依賴不穩定的字型名稱搜尋，而是按平台優先檢查 macOS PingFang、Windows 微軟正黑體及 Linux Noto CJK 的實際檔案路徑，再建立 Pygame `Font`。
+

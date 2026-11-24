@@ -8,6 +8,8 @@
 - 中文遊戲截圖：`evidence/screenshots/`
 - 架構、測試計劃、錯誤紀錄、AI 申報、計劃書及研究：`docs/`
 - 英文版：Git 標籤 `english-v1` 及 `/workspace/F6-ICT-English-Backup.zip`
+- 中文最終產物：`/workspace/受造界守護者_中文工程筆記.docx`、`/workspace/受造界守護者_中文簡報.pptx`、`/workspace/受造界守護者_中文簡報講稿.md`、`/workspace/F6-ICT-Traditional-Chinese.zip`
+- 最終自動測試：24／24 通過；包括 macOS Python 版本及 PingFang 直接路徑測試。
 
 ## 必須由學生真實提供
 

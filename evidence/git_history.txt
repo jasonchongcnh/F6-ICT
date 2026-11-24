@@ -7,6 +7,9 @@ caccc36　固定種子模型、JSON 事件、存檔及模型測試
 a7e031c　畫面證據及工程筆記
 0508254　證據索引及誠信提交清單（英文版備份點）
 df6955e　完整繁體中文翻譯、CJK 字型支援及中文畫面證據
+1cbf750　記錄繁體中文本地化里程碑
+8cc8f41　加入 macOS 相容 Python 安裝器及執行版本檢查
+6b286c9　直接載入 macOS PingFang，修正中文方格字
 
 英文版保存在 Git 標籤 english-v1。AI 產生的提交作者為 Codex AI Assistant，沒有冒充學生作品。完整差異、統計及時間可用 `git log --stat` 和 `git show <commit>` 查閱。
 
