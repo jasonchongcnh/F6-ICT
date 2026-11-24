@@ -11,6 +11,7 @@ df6955e　完整繁體中文翻譯、CJK 字型支援及中文畫面證據
 8cc8f41　加入 macOS 相容 Python 安裝器及執行版本檢查
 6b286c9　直接載入 macOS PingFang，修正中文方格字
 f22974a　同步最終提交文件、24 項測試及 macOS 修正證據
+438bfb0　加入完整 21 節專題計劃書及可驗證驗收準則
 
 英文版保存在 Git 標籤 english-v1。AI 產生的提交作者為 Codex AI Assistant，沒有冒充學生作品。完整差異、統計及時間可用 `git log --stat` 和 `git show <commit>` 查閱。
 
